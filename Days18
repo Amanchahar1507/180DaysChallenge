@@ -1,0 +1,105 @@
+#include<iostream>
+using namespace std;
+
+// 1. PRINT THE CUBE USING FUNCTION
+
+// int solve(int n){
+//     int ans = n*n*n;
+//     return ans;
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//    cout<<solve(n)<<" ";
+// }
+
+// 2. REVERSE A NUMBER USING FUNCTION;
+
+// int solve(int n){
+//     int ans =0;
+//     while(n){
+//         int rem = n%10;
+//         n = n/10;
+//         ans = ans*10 +rem;
+//     }
+//     cout<<ans<<" ";
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     return solve(n);
+// }
+
+// 3. PRINT SWAP VALUE OF A,B,C A WITH B AND B WITH C and C WITH A;
+
+// void Swap(int &a, int &b){
+//     int temp = a;
+//     a = b;
+//     b= temp;
+// }
+
+// int main(){
+//     int a,b,c;
+//     cin>>a;
+//     cin>>b;
+//     cin>>c;
+
+//     Swap(a,b);
+//     Swap(a,c);
+//     cout<<a<<b<<c<<" ";
+// }
+
+// 4. SWAP TWO NUMBER WITHOUT USING EXTRA SPACE;
+// int solve(int &a,int &b){
+//     swap(a,b);
+//     cout<<a<<" ";
+//     cout<<b<<" ";
+// }
+// int main(){
+// int a,b;
+// cin>>a;
+// cin>>b;
+// return solve(a,b);
+// }
+
+// 5. PRINT N TIMES HELLO WORLD USING FUNCTION
+
+// void solve(int n){
+//     for(int i=0;i<n;i++){
+//         cout<<"hello world " <<i+1<<endl;
+//     }
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     solve(n);
+// }
+
+// 6. GIVE NCR COMBINATION
+
+// int fact(int n){
+//     int ans =1;
+//     for(int i=1;i<=n;i++){
+//         ans = ans*i;
+//     }
+//     return ans;
+// }
+
+// int solve(int n, int r){
+//     int facto = fact(n);
+//     int fa = fact(r);
+//     int rem = fact(n-r);
+//     int res = fa * rem;
+//     int ans = facto/res;
+//     return ans;
+//  }
+
+// int main(){
+//     int n,r;
+//     cin>>n;
+//     cin>>r;
+
+//     cout<< solve(n,r)<<" ";
+// }
