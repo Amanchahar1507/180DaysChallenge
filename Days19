@@ -1,0 +1,79 @@
+
+//  1. Number of 1 Bits
+
+// int setBits(int N) {
+//         // Write Your Code here
+//         int count =0;
+//         while(N){
+//             if(N & 1){
+//                 count++;
+//             }
+//             N = N>>1;
+//         }
+        
+//         return count;
+//     }
+
+// 2. Bit Difference
+
+// int countBitsFlip(int a, int b){
+        
+//         // Your logic here
+//         int count =0;
+//         while(a || b){
+//             int val1 = a&1;
+//             int val2 = b&1;
+//             if(val1!=val2){
+//                 count++;
+//             }
+//             a = a>>1;
+//             b = b>>1;
+//         }
+//         return count;
+//     }
+
+// 3. Distribute in Circle!
+
+// int solve(int A, int B, int C) {
+//    int ans = (C+A-1)%B;
+//    return ans;
+// }
+
+// 4. Find 5 inbuilt function in c++ like min or max etc and write a code around them.
+
+
+#include <iostream>
+using namespace std;
+
+//1. max function
+
+// int main(){
+//     int a,b;
+//     cin>>a;
+//     cin>>b;
+
+//     int ans = max(a,b);
+//     cout<<ans<<"";
+// }
+
+// 2. min function
+
+// int main(){
+//     int a,b;
+//     cin>>a;
+//     cin>>b;
+
+//     int ans = min(a,b);
+//     cout<<ans;
+// }
+
+// 3. power of a number
+
+// #include <cmath>
+// int main(){
+//     int a,b;
+//     cin>>a;
+//     cin>>b;
+//     int ans = pow(a,b);
+//     cout<<ans<<"";
+// }
