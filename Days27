@@ -1,0 +1,56 @@
+1. Distribute in Circle!
+
+int solve(int A, int B, int C) {
+   int ans = (C+A-1)%B;
+   return ans;
+}
+
+2.Bubble Sort
+
+class Solution
+{
+    public:
+    //Function to sort the array using bubble sort algorithm.
+    void bubbleSort(int arr[], int n)
+    {
+        // Your code here 
+        for(int j=n-1;j>=0;j--){
+            bool swaped = 0;
+        for(int i=0;i<j;i++){
+            if(arr[i]>arr[i+1]){
+                swaped=1;
+                swap(arr[i],arr[i+1]);
+            }
+        }
+        if(swaped==0) break;
+        }
+        
+    }
+};
+
+3.Smallest Positive missing number
+
+class Solution
+{
+    public:
+    //Function to find the smallest positive number missing from the array.
+    int missingNumber(int arr[], int n) 
+    { 
+        // Your code here
+        vector<bool>v(n+1,false);
+        
+        for(int i=0;i<n;i++){
+            if(arr[i]<0 || arr[i]>n){
+                continue;
+            }
+            v[arr[i]] = true;
+        }
+        
+        for(int i=1;i<=n;i++){
+            if(v[i]==false){
+                return i;
+            }
+        }
+        return n+1;
+    } 
+};
