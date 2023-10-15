@@ -1,0 +1,100 @@
+1.  2784. Check if Array is Good
+
+class Solution {
+public:
+    bool isGood(vector<int>& nums) {
+        // int n = nums.size();
+        // if(n==1)return false;
+        
+        // sort(nums.begin(),nums.end());
+        // for(int i=0;i<n-1;i++){
+        //     if(nums[i]!=i+1){
+        //        return false;
+        //     }
+           
+        // }
+        // if(nums[n-1]!=n-1){
+        //     return false;
+        // }
+        // return true;
+
+        int n = nums.size();
+        int maxi = *max_element(nums.begin(),nums.end());
+        if(maxi >n) return false;
+        vector<int>v(n+1,0);
+        for(int num:nums){
+            v[num]++;
+        }
+        for(int i=1;i<maxi;i++){
+            if(v[i]==2 || v[i]==0){
+                return false;
+            }
+        }
+        if(v[maxi]==2) return true;
+        return false;
+    }
+};
+
+2.   27. Remove Element\
+
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int n = nums.size();
+        for(int i=0;i<n;i++){
+            if(nums[i]==val){
+                nums.erase(nums.begin()+i);
+                n--;
+                i--;
+            }
+        }
+        return nums.size();
+    }
+};
+
+3.  Remove Duplicates from Sorted Array
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        if(n<2) return n;
+        int index=1;
+       for(int i=1;i<nums.size();i++){
+           if(nums[i]!=nums[i-1]){
+               nums[index] = nums[i];
+               index++;
+           }
+       }
+        return index;
+    }
+};
+
+4.  292. Nim Game
+
+class Solution {
+public:
+    bool canWinNim(int n) {
+        if(n%4==0){
+            return false;
+        }
+            return true;
+    }
+};
+
+5.  Trailing zeroes in factorial
+
+class Solution
+{
+public:
+    int trailingZeroes(int N)
+    {
+        // Write Your Code here
+        int ans=0;
+        while(N>=5){
+            ans+=N/5;
+            N = N/5;
+        }
+        return ans;
+    }
+};
