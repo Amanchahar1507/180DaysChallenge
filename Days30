@@ -1,0 +1,144 @@
+1.  704. Binary Search
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int s =0,e =n-1,mid;
+        while(s<=e){
+            mid = s+ (e-s)/2;
+            if(nums[mid]==target){
+                return mid;
+
+            }
+            else if(nums[mid]>target){
+                e = mid-1;
+            }
+            else{
+                s = mid+1;
+            }
+        }
+        return -1;
+    }
+};
+
+
+2. An array is given in decreasing order with Key, Find the index of key, if key is not present, print -1;
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout<<"enter the numbers"<<" ";
+    cin>>n;
+    int arr[1000];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int key;
+    cout<<"enter the key"<<" ";
+    cin>>key;
+
+    int s =n-1,e =0,mid;
+    int ans=-1;
+    while(e<=s){
+        mid = s +(e-s)/2;
+        if(arr[mid]==key){
+            ans = mid;
+            break;
+        }
+        else if(arr[mid] > key){
+            e = mid+1;
+        }
+        else{
+            s = mid-1;
+        }
+    }
+    cout<<ans;
+    return -1;
+}
+
+4.  222. Count Complete Tree Nodes
+
+
+class Solution {
+public:
+
+    int countNodes(TreeNode* root) {
+        if(root==NULL){
+            return 0;
+        }
+        int lh = leftheight(root);
+        int rh = rightheight(root);
+
+        if(lh == rh) return (1<<lh)-1;
+        return 1+(countNodes(root->left)+(countNodes(root->right)));
+    }
+
+    int leftheight(TreeNode*root){
+        int cnt=0;
+        while(root){
+            cnt++;
+            root = root->left;
+        }
+        return cnt;
+    }
+
+    int rightheight(TreeNode*root){
+        int cnt=0;
+        while(root){
+            cnt++;
+            root = root->right;
+        }
+        return cnt;
+    }
+};
+
+4.   268. Missing Number
+
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+               
+        sort(nums.begin(),nums.end());
+        int n = nums.size();
+        int s=0,e =n-1,mid,ans=n;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            if(nums[mid]>mid){
+                ans = mid;
+                e = mid-1;
+            }
+            else{
+                s =  mid+1;
+            }
+        }
+        return ans;
+    }
+};
+
+5.  35. Search Insert Position
+
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = nums.size();
+        int s=0,e = n-1,mid;
+        int ans=-1;
+        while(s<=e){
+            mid = s +(e-s)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(nums[mid] < target){
+                ans = mid;
+                s = mid+1;
+            }
+            else{
+                e =mid-1;
+            }
+        }
+        return ans+1;
+    }
+};
