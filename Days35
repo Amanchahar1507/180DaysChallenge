@@ -1,0 +1,75 @@
+1.  367. Valid Perfect Square
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+    
+        int s =0,e= num-1;
+        long long mid;
+        if(num==1) return true;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            long long sq = mid*mid;
+            if(sq ==num){
+                return true;
+            }
+            else if(sq > num){
+                e = mid-1;
+            }
+            else{
+                s = mid+1;
+            }
+        }
+        return false;
+    }
+};
+
+2.. 1608. Special Array With X Elements Greater Than or Equal X
+
+class Solution {
+public:
+
+    int solve(int mid, vector<int>nums){
+        int count =0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]>=mid) count++;
+        }
+        return count;
+    }
+
+    int specialArray(vector<int>& nums) {
+        int n = nums.size();
+        int s =1,e = n,mid;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            int count = solve(mid,nums);
+            if(count == mid){
+                return mid;
+            }
+            else if(count > mid){
+                s = mid+1;
+            }
+            else{
+                e = mid-1;
+            }
+        }
+        return -1;
+    }
+};
+
+3.. 162. Find Peak Element
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& nums) {
+        int n = nums.size();
+        int s=0,e = n-1,mid;
+        if(n==1) return 0;
+        while(s<e){
+            mid= s + (e-s)/2;
+            if(nums[mid] >nums[mid+1]) e = mid;
+            else s = mid+1;
+        }
+        return s;
+    }
+};
