@@ -1,0 +1,95 @@
+1... Aggressive Cows
+
+class Solution {
+public:
+
+    int solve(int n, int k, vector<int> &stalls) {
+    
+        // Write your code here
+        sort(stalls.begin(),stalls.end());
+        int s=1;
+        int e = stalls[n-1]-stalls[0];
+        int mid,ans;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            int count =1,dist=stalls[0];
+            for(int i=1;i<n;i++){
+                if(mid <=(stalls[i]-dist)){
+                    count++;
+                    dist = stalls[i];
+                }
+            }
+            if(count <k){
+                e = mid-1;
+            }
+            else{
+                ans = mid;
+                s= mid+1;
+            }
+        }
+        return ans;
+    }
+};
+
+2.   875. Koko Eating Bananas
+
+class Solution {
+public:
+    
+    bool good(int mid, vector<int> piles, int h)
+    {
+        int time = 0;
+        for(int i=0; i<piles.size(); i++)
+        {
+            int temp = piles[i]/mid + (piles[i]%mid > 0 ? 1:0);
+            time += temp;
+        }
+        return time <= h;
+    }
+    
+    int minEatingSpeed(vector<int>& piles, int h) 
+    {
+        int l = 1;
+        int r=piles[0];
+        for(int i=1;i<piles.size();i++){
+            r = max(r,piles[i]);
+        }                
+        while(l < r)
+        {
+            int mid = l + (r-l)/2;
+            if(good(mid, piles, h)) r = mid;
+            else l = mid+1;
+        }
+        return l;
+    }
+};
+
+3..  1552. Magnetic Force Between Two Balls
+class Solution {
+public:
+    int maxDistance(vector<int>& position, int m) {
+        sort(position.begin(),position.end());
+        int n = position.size();
+        int s =1,e =position[n-1];
+        int mid;
+        int ans;
+        while(s<=e){
+            mid = s + (e-s)/2;
+            int ball =1,count=position[0];
+            for(int i=0;i<n;i++){
+                if(position[i]-count>=mid){
+                    ball++;
+                    count=position[i];
+                }
+            }
+            if(ball<m){
+                e = mid-1;
+            }
+            else{
+                ans=mid;
+                s = mid+1;
+            }
+        }
+        return ans;
+    }
+};
