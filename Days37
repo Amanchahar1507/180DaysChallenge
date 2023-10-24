@@ -1,0 +1,116 @@
+#include<iostream>
+#include<vector>
+#include <algorithm> 
+using namespace std;
+
+int main(){
+
+    //initialize vector
+    // vector<int>v1;
+    // vector<int>v2(5,1);
+
+    //size and capacity
+
+    // cout<<"size of vector v1"<<v1.size()<<endl;
+    // cout<<"capacity of vector v1"<<v1.capacity()<<endl;
+    // v1.push_back(1);
+    // v1.push_back(2);
+    // v1.push_back(3);
+    // cout<<"size of vector v1:"<<v1.size()<<endl;
+    // cout<<"capacity of vector v1:"<<v1.capacity()<<endl;
+
+    //DELETE FROM VECTOR
+
+    // vector<int>v3;
+    // v3.push_back(1);
+    // v3.push_back(11);
+    // v3.push_back(12);
+    // v3.push_back(13);
+    // v3.push_back(14);
+
+    // for(int i=0;i<v3.size();i++){
+    //     cout<<v3[i]<<" ";
+    // }
+    // cout<<endl;
+
+    // v3.pop_back();
+
+    // for(int i=0;i<v3.size();i++){
+    //     cout<<v3[i]<<" ";
+    // }
+    // cout<<endl;
+
+    // v3.erase(v3.begin()+1);
+
+    // for(int i=0;i<v3.size();i++){
+    //     cout<<v3[i]<<" ";
+    // }
+    // cout<<endl;
+
+    // v3.clear();
+
+    // cout<<v3.size()<<endl;
+    // cout<<v3.capacity()<<endl;
+    
+    //FRONT OR BACK
+
+    // vector<int>v4;
+    // v4.push_back(1);
+    // v4.push_back(11);
+    // v4.push_back(12);
+    // v4.push_back(13);
+    // v4.push_back(14);
+    // v4.push_back(15);
+
+    // cout<<v4[0]<<endl;
+    // cout<<v4.front()<<endl;
+
+    // cout<<v4[v4.size()-1]<<endl;
+    // cout<<v4.back()<<endl;
+
+    //SORT
+
+    // vector<int>v5;
+    // v5.push_back(1);
+    // v5.push_back(11);
+    // v5.push_back(12);
+    // v5.push_back(13);
+    // v5.push_back(14);
+    // v5.push_back(15);
+    // v5.push_back(16);
+
+    // //sort in increasing order
+
+    // sort(v5.begin(),v5.end());
+    // for(int i=0;i<v5.size();i++)
+    //  cout<<v5[i]<<" ";
+    // cout<<endl;
+
+    // //sort in decreasing order
+
+    // sort(v5.rbegin(),v5.rend());
+    //  for(int i=0;i<v5.size();i++)
+    //  cout<<v5[i]<<" ";
+    // cout<<endl;
+
+    // sort(v5.begin(),v5.end(),greater<int>());
+    //  for(int i=0;i<v5.size();i++)
+    //  cout<<v5[i]<<" ";
+
+    //SEARCH IN VECTOR
+
+    vector<int>v6;
+    v6.push_back(1);
+    v6.push_back(112);
+    v6.push_back(12);
+    v6.push_back(130);
+    v6.push_back(14);
+    v6.push_back(19);
+
+    for(int i=0;i<v6.size();i++)
+        cout<<v6[i]<<" ";
+    cout<<endl;    
+    cout<<binary_search(v6.begin(),v6.end(),12)<<endl;
+    cout<<find(v6.begin(),v6.end(),130)-v6.begin();
+
+}
