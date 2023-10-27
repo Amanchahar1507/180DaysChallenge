@@ -1,0 +1,153 @@
+1.   42. Trapping Rain Water
+
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        // int n = height.size();
+        // int leftMax[n];
+        // int rightMax[n];
+
+        // leftMax[0] =0;
+        // for(int i=1;i<n;i++){
+        //     leftMax[i] = max(leftMax[i-1],height[n-1]);
+        // }
+
+        // rightMax[n-1] =0;
+        // for(int i=n-2;i>=0;i--){
+        //     rightMax[i] = max(rightMax[i+1], height[i+1]);
+        // }
+
+        // int water =0;
+        // for(int i=0;i<n;i++){
+        //     int mini = min(leftMax[i],rightMax[i]);
+
+        //     if(mini-height[i]>=0){
+        //         water+= (mini-height[i]);
+        //     }
+        // }
+        // return water;
+        
+
+        int n = height.size();
+        int leftMax=0,rightMax=0,maxiHeight=height[0],index=0;
+
+        for(int i=1;i<n;i++){
+            if(height[i]> maxiHeight){
+                maxiHeight = height[i];
+                index =i;
+            }
+        }
+
+        int water =0;
+        for(int i=0;i<index;i++){
+            if(leftMax>height[i]){
+                water += leftMax - height[i];
+            }
+            else{
+                leftMax = height[i];
+            }
+        }
+
+        for(int i=n-1;i>index;i--){
+            if(rightMax>height[i]){
+                water += rightMax - height[i];
+            }
+            else{
+                rightMax = height[i];
+            }
+        }
+        return water;
+    }
+};
+
+2..  Triplet Sum in Array
+
+class Solution{
+    public:
+    //Function to find if there exists a triplet in the 
+    //array A[] which sums up to X.
+    bool find3Numbers(int A[], int n, int X)
+    {
+        //Your Code Here
+        
+        // 1. T.C->O(N^3);
+        
+        // for(int i=0;i<n-2;i++){
+        //     for(int j=i+1;j<n-1;j++){
+        //         for(int k=j+1;k<n;k++){
+        //             int sum = A[i]+A[j]+A[k];
+        //             if(sum==X) return 1;
+        //         }
+        //     }
+        // }
+        // return 0;
+        
+        
+        // 2.  T.C-> O(N^2LOGN);
+        
+        // sort (A,A+n);
+        // for(int i=0;i<n-2;i++){
+        //     for(int j=i+1;j<n-1;j++){
+        //         int sum = A[i] + A[j];
+        //         int find = X - sum;
+        //         int s=j+1,e =n-1;
+        //         while(s<=e){
+        //             int mid = s + (e-s)/2;
+        //             if(A[mid]==find){
+        //                 return 1;
+        //             }
+        //             else if(A[mid]> find){
+        //                 e = mid-1;
+        //             }
+        //             else{
+        //                 s = mid+1;
+        //             }
+        //         }
+        //     }
+        // }
+        // return 0;
+        
+        
+        // 3.. T.C-> O(N^2);
+        
+        // sort (A,A+n);
+        // for(int i=0;i<n-2;i++){
+        //     int find = X- A[i];
+        //     int s = i+1,e =n-1;
+            
+        //     while(s<e){
+        //         if(A[s]+A[e] ==find){
+        //             return 1;
+        //         }
+        //         else if(A[s]+A[e] > find){
+        //             e--;
+        //         }
+        //         else{
+        //             s++;
+        //         }
+        //     }
+        // }
+        // return 0;
+    }
+
+};
+
+3..  Four Elements
+
+bool find4Numbers(int A[], int n, int X)  
+{
+    sort(A,A+n);
+    for(int i=0;i<n-3;i++){
+        for(int j=i+1;j<n-2;j++){
+            int sum = A[i]+A[j];
+            int rem = X-sum;
+            int s = j+1,e =n-1;
+            while(s<e){
+                if(A[s]+A[e] == rem) return 1;
+                else if(A[s]+A[e] >rem) e--;
+                else s++;
+            }
+        }
+    }
+    return 0;
+}
