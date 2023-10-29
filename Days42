@@ -1,0 +1,40 @@
+1.  Maximum prefix sum for a given range
+
+class Solution{
+  public:
+    vector<int> maxPrefixes(int a[], int L[], int R[], int N, int Q) {
+        vector<int>ans;
+        int j=0;
+        while(Q!=0){
+            int prefix=0,maxi=INT_MIN;
+            for(int i=L[j];i<=R[j];i++){
+                prefix += a[i];
+                maxi = max(maxi,prefix);
+            }
+            ans.push_back(maxi);
+            j++;
+            Q--;
+        }
+        return ans;
+    }
+};
+
+2. Kadane's Algorithm
+
+class Solution{
+    public:
+    // arr: input array
+    // n: size of array
+    //Function to find the sum of contiguous subarray with maximum sum.
+    long long maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+        long long maxi=INT_MIN,ans=0;
+        for(int i=0;i<n;i++){
+            ans += arr[i];
+            maxi = max(maxi,ans);
+            if(ans<0) ans=0;
+        }
+        return maxi;
+    }
+};
