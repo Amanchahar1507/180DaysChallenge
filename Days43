@@ -1,0 +1,132 @@
+INTRODUCTION OF 2D ARRAYS.
+
+#include<iostream>
+using namespace std;
+
+// void fun(int arr[][5],int row,int col){
+//     for(int i=0;i<col;i++){
+//         for(int j=0;j<row;j++){
+//             cout<<arr[j][i]<<" ";
+//         }
+//     }
+// }
+
+// int main(){
+
+    // // INITILIZE THE 2D ARRAY
+    // int arr[4][5] ={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
+
+    //PRINTING THE ROW WISE
+
+    // for(int i=0;i<4;i++){
+    //     for(int j=0;j<5;j++){
+    //         cout<<arr[i][j]<<" ";
+    //     }
+    // }
+    // cout<<endl;
+
+    //PRINTING THE COLUMN WISE;
+
+    // fun(arr,4,5);
+
+    // SEARCH FROM A 2D ARRAY
+
+    // for(int i=0;i<4;i++){
+    //     for(int j=0;j<5;j++){
+    //         if(arr[i][j]==25){
+    //             cout<<"Yes"<<" ";
+    //             return 0;
+    //         }
+    //     }
+    // }
+    // cout<<"No"<<" ";
+
+    // ADD TWO MATRIX
+    
+    // int arr1[3][3] = {1,2,3,4,5,6,7,8,9};
+    // int arr2[3][3] = {1,2,3,4,5,6,7,8,9};
+    // int ans[3][3];
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<3;j++){
+    //         ans[i][j] = arr1[i][j] + arr2[i][j];
+    //     }
+    // }
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<3;j++){
+    //         cout<<ans[i][j]<<" ";
+    //     }
+    // }
+
+    // SUBTRACT TWO MATRIX
+    // int arr1[3][3] = {1,2,3,4,5,6,7,8,9};
+    // int arr2[3][3] = {1,2,5,4,5,6,7,8,9};
+    // int ans[3][3];
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<3;j++){
+    //         ans[i][j] = arr1[i][j] - arr2[i][j];
+    //     }
+    // }
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<3;j++){
+    //         cout<<ans[i][j]<<" ";
+    //     }
+    // }
+
+    // PRINT ROW INDEX WITH MAXIMUM SUM
+
+    // int arr[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
+    // int index=0,sum=0;
+    // for(int i=0;i<3;i++){
+    //     int rowsum=0;
+    //     for(int j=0;j<4;j++){
+    //         rowsum += arr[i][j];
+
+    //     }
+    //     if(sum<rowsum){
+    //         sum = rowsum;
+    //         index=i;
+    //     }
+    // }
+    // cout<<index;
+    
+//}
+
+// SUM OF COLUMN OF MATRIX
+
+// void fun(int arr[][4],int row,int col){
+//     for(int i=0;i<col;i++){
+//         int sum=0;
+//         for(int j=0;j<row;j++){
+//             sum +=arr[j][i];
+//         }
+//         cout<< sum<<" ";
+//     }
+// }
+
+// int main(){
+//     int arr[3][4] = {1,2,3,4,5,6,7,8,9,10,11,12};
+
+//     fun(arr,3,4);
+// }
+
+// SUM OF DIAGONAL IN MATRIX
+
+// int main(){
+//     int arr[3][3] = {1,2,3,4,5,6,7,8,9};
+
+//     int first=0;
+//     for(int i=0;i<3;i++){
+//         first += arr[i][i];
+//     }
+
+//     int i=0,j=2;
+//     int second=0;
+//     while(j>=0){
+//         second += arr[i][j];
+//         i++,j--;
+//     }
+
+//     cout<<first <<endl;
+//     cout<<second<<endl;
+//     cout<<first+second<<endl;
+// }
