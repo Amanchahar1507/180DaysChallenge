@@ -1,0 +1,91 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+    // vector<vector<int> >arr (3,vector<int>(4,1));
+
+    // for(int i=0;i<3;i++){
+    //     for(int j=0;j<4;j++){
+    //         cout<<arr[i][j]<<" ";
+    //     }
+    // }
+
+    // int n,m;
+    // cin>>n>>m;
+
+    // vector<vector<int> >v(n,vector<int>(m,0));
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         cin>>v[i][j];
+    //     }
+    // }
+
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         cout<<v[i][j]<<" ";
+    //     }
+    // }
+
+
+    // WAVE FORM IN 2D ARRAY
+    
+    // int arr[3][4] ={1,2,3,4,5,6,7,8,9,10,11,12};
+
+    // for(int i=0;i<4;i++){
+    //     if(i%2==0){
+    //         for(int j=0;j<3;j++){
+    //             cout<<arr[j][i]<<" ";
+    //         }
+    //     }
+    //     else{
+    //         for(int j=2;j>=0;j--){
+    //             cout<<arr[j][i]<<" ";
+    //         }
+    //     }
+    // }
+}
+
+54. Spiral Matrix
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int>ans;
+        int n = matrix.size();
+        int m = matrix[0].size();
+
+        int top=0,right = m-1,bottom=n-1,left=0;
+        while(top<=bottom && left<=right){
+            //top
+            for(int i=left;i<=right;i++){
+                ans.push_back(matrix[top][i]);
+               
+            }
+             top++;
+
+            //right
+            for(int i=top;i<=bottom;i++){
+                ans.push_back(matrix[i][right]);
+            }
+            right--;
+
+            //bottom
+            if(top<=bottom){
+                for(int i=right;i>=left;i--){
+                    ans.push_back(matrix[bottom][i]);
+                }
+                 bottom--;
+            }
+
+            //left
+            if(left<=right){
+                for(int i=bottom;i>=top;i--){
+                    ans.push_back(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+        return ans;
+    }
+};
