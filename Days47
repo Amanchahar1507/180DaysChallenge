@@ -1,0 +1,129 @@
+1.   Find Missing And Repeating
+
+class Solution{
+public:
+    vector<int> findTwoElement(vector<int> arr, int n) {
+        // code here does not give correct
+    //     sort(arr.begin(),arr.end());
+    //     vector<int>ans;
+    //     int ans1 =0,ans2=0;
+    //   int i=0,j=i+1;
+    //   while(j<n){
+    //         if(arr[i]+1 == arr[j]){
+    //             i++,j++;
+    //         }
+    //         else if(arr[i]+2 == arr[j]){
+    //             ans1 = arr[i]+1; 
+    //             i++,j++;
+    //         } 
+    //         else if(arr[i]==arr[j]){
+    //             ans2 = arr[i];
+    //             i++,j++;
+    //         } 
+    //   }
+    //     ans.push_back(ans1);
+    //     ans.push_back(ans2);
+    //     return ans;
+    
+    
+    // 2. by using vector but does not give correct;
+    
+    // vector<int>ans(n+1,0);
+    // for(int i=0;i<n;i++){
+    //     ans[arr[i]]++;
+    // }
+    
+    // int m = ans.size();
+    // vector<int>sol;
+    // for(int j=1;j<=m;j++){
+    //     if(ans[j]==0){
+    //         sol.push_back(ans[j]);
+    //     }
+    //     if(ans[j]==2){
+    //         sol.push_back(ans[j]);
+    //     }
+    // }
+    
+    // return sol;
+    
+    // 3. without using any space we can store value with occurence in same array address.
+    
+        // for(int i=0;i<n;i++){
+        //     arr[i] = arr[i]-1;
+        // }
+        
+        // for(int i=0;i<n;i++){
+        //     arr[arr[i]%n] +=  n;
+        // }
+        
+        // vector<int>ans(2);
+        
+        // for(int i=0;i<n;i++){
+        //     if(arr[i]/n==0){
+        //         ans[1] = i+1;
+        //     }
+        //     else if(arr[i]/n==2){
+        //         ans[0] = i+1;
+        //     }
+        // }
+        
+        // return ans;
+    }
+};
+
+2... Frequencies of Limited Range Array Elements
+class Solution{
+    public:
+    //Function to count the frequency of all elements from 1 to N in the array.
+    void frequencyCount(vector<int>& arr,int N, int P)
+    { 
+        // code here
+        // vector<int>ans(N+1,0);
+        // for(int i=0;i<N;i++){
+        //     if(arr[i]<=N)
+        //     ans[arr[i]-1]++;
+        // }
+        
+        // for(int i=0;i<N;i++){
+        //     arr[i] = ans[i]; 
+        // }
+        
+        // this not work on test case 1 2 3 4 5 p=5, n=5
+        // but in compilation it give correct answer but in submission give error
+        // Abort signal from abort(3) (SIGABRT)
+        
+        for(int i=0;i<N;i++){
+            arr[i] -= 1;
+        }
+        
+        for(int i=0;i<N;i++){
+            arr[arr[i]%P] +=P;
+        }
+        
+        for(int i=0;i<N;i++){
+            arr[i] /= P;
+        }
+    }
+};
+
+3... 169. Majority Element
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        int count=0;
+        int value=0;
+        for(int i=0;i<n;i++){
+            if(count==0){
+                value=nums[i];
+                count=1;
+            }
+            else {
+                if(value==nums[i])
+                count++;
+                else count--;
+            }
+        }
+        return value;
+    }
+};
