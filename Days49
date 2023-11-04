@@ -1,0 +1,144 @@
+1.   Majority Element
+
+class Solution{
+  public:
+     // Function to find majority element in the array
+    // a: input array
+    // size: size of input array
+    int majorityElement(int a[], int size)
+    {
+        // most optimized approach by moore voting algorith help.
+        
+        int candidate=0,count=0;
+        for(int i=0;i<size;i++){
+            if(count==0){
+                candidate = a[i];
+                count=1;
+            }
+            else{
+                if(a[i]==candidate){
+                    count++;
+                }
+                else{
+                    count--;
+                }
+            }
+        }
+        // cout<<candidate;
+        int cnt=0;
+        for(int i=0;i<size;i++){
+            if(a[i]==candidate){
+                cnt++;
+            }
+        }
+        if(cnt>size/2) return candidate;
+        return -1;
+    }
+};
+
+2...   41. First Missing Positive
+
+class Solution {
+public:
+    int firstMissingPositive(vector<int>& nums) {
+       int n = nums.size();
+
+       for(int i=0;i<n;i++){
+           int ele = nums[i];
+
+           if(ele>=1 && ele<=n){
+               int index = ele-1;
+               if(nums[index]!=ele){
+                   swap(nums[index],nums[i]);
+                   i--;
+               }
+           }
+       }
+
+       for(int i=0;i<n;i++){
+           if(nums[i] != i+1 ){
+              return  i+1;
+           }
+       }
+       return n+1;
+
+       // this code does not work.
+
+        // vector<int>ans;
+        // int n = nums.size();
+        // for(int i=0;i<n;i++){
+        //     if(nums[i]>=0)
+        //      ans[nums[i]]++;
+        // }
+        // int val=0;
+        // for(int i=1;i<ans.size();i++){
+        //     if(ans[i]==0){
+        //         val=i;
+        //         break;
+        //     }
+        // }
+        // return val;
+    }
+};
+
+3.....   Transpose of Matrix
+
+class Solution
+{   
+    public:  
+    //Function to find transpose of a matrix.
+    void transpose(vector<vector<int> >& matrix, int n)
+    { 
+        // code here 
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+    }
+};
+
+4.....  59. Spiral Matrix II
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>>v(n,vector<int>(n,0));
+
+        int top=0,right=n-1,bottom=n-1,left=0;
+        int k=1;
+        while(left<=right && top<=bottom){
+            //top
+            
+            for(int i=left;i<=right;i++){
+                v[top][i] = k;
+                k++;
+            }
+            top++;
+
+            for(int i=top;i<=bottom;i++){
+                v[i][right] = k;
+                k++;
+            }
+            right--;
+
+            if(top<=bottom){
+                for(int i=right;i>=left;i--){
+                    v[bottom][i] = k;
+                    k++;
+                }
+                bottom--;
+            }
+            
+            if(left<=right){
+                for(int i=bottom;i>=top;i-- ){
+                    v[i][left] = k;
+                    k++;
+                }
+                left++;
+            }
+
+        }
+        return v;
+    }
+};
