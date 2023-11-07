@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    // char ch[] = {'a','p','p','l','e'};
+    // cout<<ch;
+
+    // char ch[] = {'a','p','p','l','e'};
+
+    // for(int i=0;i<5;i++){
+    //     cout<<ch[i];
+    // }
+
+    // char ch[20];
+    // cin>>ch;
+    // cout<<ch;
+
+    // char ch[10];
+    // cin>>ch;
+    // ch[2] ='\0';
+    // cout<<ch;
+
+    // string ans = "aman";
+    // cout<<ans;
+
+    // string ans;
+    // cin>>ans;
+    // cout<<ans;
+
+    // string ans;
+    // getline(cin,ans);
+    // cout<<ans;
+
+    // string ans="rohit";
+    // cout<<ans.size();
+
+    // string ans1="";
+    // string ans2 = "aman";
+    // string ans3 = "chahar";
+    // ans1 = ans3 + ans2;
+
+    // cout<<ans1;
+
+    // string ans= "aman is a \"good\" boy";
+    // cout<<ans;
+
+    // string ans="amanchahar";
+    // int s=0,e = ans.size()-1;
+    // while(s<e){
+    //     swap(ans[s],ans[e]);
+    //     s++;
+    //     e--;
+    // }
+    // cout<<ans;
+
+    // string ans="aman";
+    // int size=0;
+    // while(ans[size]!='\0'){
+    //     size++;
+    // }
+    // cout<<size;
+
+    // string ans="namans";
+    // int s=0,e = ans.size()-1;
+    // while(s<e){
+    //     if(ans[s]!=ans[e]){
+    //         cout<<"not a palindrome";
+    //         return 0;
+    //     }
+    //     s++;
+    //     e--;
+    // }
+    // cout<<"palindrome";
+}
