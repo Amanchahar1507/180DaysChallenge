@@ -1,0 +1,97 @@
+1........ 1108. Defanging an IP Address
+
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        string ans="";
+        int n = address.size();
+        int i=0;
+        while(i<n){
+            if(address[i]=='.'){
+                ans+="[.]";
+            }
+            else{
+                ans+=address[i];
+            }
+            i++;
+        }
+        return ans;
+    }
+};
+
+2......Check if string is rotated by two places
+
+
+class Solution
+{
+    public:
+    //Function to check if a string can be obtained by rotating
+    //another string by exactly 2 places.
+    
+    void rotateanticlock(string &s){
+        int n = s.size();
+        int i=1;
+        char ch = s[0];
+        while(i<n){
+            s[i-1] = s[i];
+            i++;
+        }
+        s[n-1] = ch;
+    }
+    
+    void rotateclock(string &s){
+        int n = s.size();
+        char ch = s[n-1];
+        int i=n-2;
+        while(i>=0){
+            s[i+1] = s[i];
+            i--;
+        }
+        s[0] = ch;
+    }
+    
+    bool isRotated(string str1, string str2)
+    {
+        // Your code here
+        if(str1.size()!=str2.size()){
+            return false;
+        }
+        string clock=str1;
+        
+        rotateclock(clock);
+        rotateclock(clock);
+        
+        if(clock==str2) return 1;
+        
+        string anticlock = str1;
+        rotateanticlock(anticlock);
+        rotateanticlock(anticlock);
+        
+        if(anticlock == str2) return 1;
+        
+        return 0;
+    }
+
+};
+
+3.....1832. Check if the Sentence Is Pangram
+
+class Solution {
+public:
+    bool checkIfPangram(string sentence) {
+        vector<bool>ans(26,0);
+        int n= sentence.size();
+
+        for(int i=0;i<n;i++){
+            int index = sentence[i]-'a';
+            ans[index] = 1;
+        }
+
+        for(int i=0;i<26;i++){
+            if(ans[i]==0){
+                return 0;
+            }
+        }
+        return 1;
+    }
+};
