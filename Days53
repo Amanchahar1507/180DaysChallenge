@@ -1,0 +1,69 @@
+409. Longest Palindrome
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        vector<int>lower(26,0);
+        vector<int>upper(26,0);
+        int n = s.size();
+        for(int i=0;i<n;i++){
+            if(s[i]>=97){
+                int index = s[i]-'a';
+                lower[index]++;
+            }
+            else{
+                int index = s[i]-'A';
+                upper[index]++;
+            }
+        }
+        bool odd =0;
+        int count=0;
+        for(int i=0;i<26;i++){
+            if(lower[i]%2==0){
+                count+= lower[i];
+            }
+            else{
+                count += lower[i]-1;
+                odd=1;
+            }
+
+            if(upper[i]%2==0){
+                count+=upper[i];
+            }
+            else{
+                count+= upper[i]-1;
+                odd=1;
+            }
+        }
+        if(odd==1) count+=1;
+        return count;
+    }
+};
+
+1859. Sorting the Sentence
+
+class Solution {
+public:
+    string sortSentence(string s) {
+        vector<string> v(9);
+        string str="";
+        for(int i=0;i<s.size();i++){
+            if((int)s[i] == 32) {
+                str="";
+                continue;
+            }
+            if (isdigit(s[i])){
+                v[s[i]-'0'-1] = str;
+            }
+            else str+=s[i];
+        }
+        str="";
+        for(auto ss: v){
+            if(ss.empty()) break;
+            str+=ss;
+            str+=" ";
+        }
+        str.erase(str.begin()+str.size()-1);
+        return str;
+    }
+};
