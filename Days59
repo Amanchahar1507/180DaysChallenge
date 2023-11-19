@@ -1,0 +1,80 @@
+1..........Second most repeated string in a sequence
+
+class Solution
+{
+  public:
+    string secFrequent (string arr[], int n)
+    {
+        //code here.
+        unordered_map<string,int>mp;
+        
+        for(int i=0;i<n;i++){
+            mp[arr[i]]++;
+        }
+        
+        int mx =INT_MIN,mx2=INT_MIN;
+        string ans="";
+        for(auto it:mp){
+            if(it.second>mx){
+                mx = it.second;
+            }
+        }
+        for(auto it:mp){
+            if(it.second>mx2 && it.second!=mx){
+                mx2 = it.second;
+                ans = it.first;
+            }
+        }
+        return ans;
+    }
+};
+
+2........Run Length Encoding
+
+string encode(string src)
+{     
+  //Your code here 
+  string ans="";
+  int n = src.size();
+    int i=0,count=0;
+    
+    while(i<n){
+        if(src[i]==src[i+1]){
+            count++;
+        }
+        else{
+            ans +=src[i];
+            ans+= to_string(count+1);
+            count=0;
+        }
+        i++;
+    }
+    return ans;
+} 
+
+3.........Winner of an election
+
+class Solution{
+  public:
+  
+    vector<string> winner(string arr[],int n)
+    {
+       map<string,int>res;
+        vector<string>ans;
+        for(int i=0;i<n;i++){
+            res[arr[i]]++;
+        }
+        int val=0;
+        string s;
+        int v;
+        for(auto x:res){
+            if(x.second>val){
+                val=x.second;
+                s=x.first;
+            }
+        }
+        ans.push_back(s);
+        ans.push_back(to_string(val));
+        return ans;
+    }
+};
