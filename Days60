@@ -1,0 +1,68 @@
+3. Longest Substring Without Repeating Characters
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        vector<bool>v(256,0);
+        int left =0,right=0,len=0;
+        int n = s.size();
+        while(right<n){
+            while(v[s[right]]){
+                v[s[left]] =0;
+                left++;
+            }
+            v[s[right]] =1;
+            len = max(len,right-left+1);
+            right++;
+        }
+        return len;
+    }
+};
+
+2.......Smallest distinct window
+
+class Solution{
+    public:
+    int findSubString(string str)
+    {
+        // Your code goes here  
+        vector<int>v(256,0);
+        int n = str.size();
+        int left=0,right=0,len=n;
+         int dif =0;
+        while(left<n){
+            if(v[str[left]]==0){
+                dif++;
+            }
+            v[str[left]]++;
+            left++;
+        }
+        
+        for(int i=0;i<256;i++){
+            v[i] =0;
+        }
+        left=0;
+        
+        while(right<n){
+            while(dif && right<n){
+                if(v[str[right]]==0){
+                    dif--;
+                }
+                v[str[right]]++;
+                right++;
+            }
+            
+            len = min(len,right-left);
+            
+            while(dif!=1){
+                len = min(len,right-left);
+                v[str[left]]--;
+                if(v[str[left]]==0){
+                    dif++;
+                }
+                left++;
+            }
+        }
+        return len;
+    }
+};
