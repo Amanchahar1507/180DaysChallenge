@@ -1,0 +1,52 @@
+28. Find the Index of the First Occurrence in a String
+
+class Solution {
+public:
+
+   void lps(vector<int>&lp,string s) {
+	    int pre =0,suf=1;
+	    
+	    while(suf<s.size()){
+	        if(s[pre] == s[suf]){
+	            lp[suf] = pre+1;
+	            suf++;
+	            pre++;
+	        }
+	        else{
+	            if(pre==0){
+	                lp[suf] = 0;
+	                suf++;
+	            }
+	            else{
+	                pre = lp[pre-1];
+	            }
+	        }
+	    }
+	   
+	}
+    int strStr(string haystack, string needle) {
+        vector<int>lp(needle.size(),0);
+        lps(lp,needle);
+
+        int first=0,second=0;
+        while(first<haystack.size() && second<needle.size()){
+            if(haystack[first]==needle[second]){
+                first++;
+                second++;
+            }
+            else{
+                if(second==0){
+                    first++;
+                }
+                else{
+                    second = lp[second-1];
+                }
+            }
+        }
+
+        if(second==needle.size()){
+            return first-second;
+        }
+        return -1;
+    }
+};
