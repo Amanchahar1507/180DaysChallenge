@@ -1,0 +1,36 @@
+1....214. Shortest Palindrome
+
+class Solution {
+public:
+    string shortestPalindrome(string s) {
+        
+        string rev = s;
+        reverse(rev.begin(),rev.end());
+        string temp = s+ "#" + rev;
+
+        int n = temp.size();
+        int first=0,last=1;
+        vector<int>lps(n,0);
+        while(last<n){
+            if(temp[first] == temp[last]){
+                lps[last] = first+1;
+                first++;
+                last++;
+            }
+            else{
+                if(first>0){
+                    first = lps[first-1];
+                }
+                else{
+                     lps[last] =0;
+                     last++;
+                }
+            }
+        }
+        int m = s.size();
+        string str=s.substr(lps[n-1],m-n+1);
+        reverse(str.begin(),str.end());
+       return str + s;
+    }
+};
+
