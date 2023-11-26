@@ -1,0 +1,36 @@
+Longest K unique characters substring
+
+class Solution{
+  public:
+    int longestKSubstr(string s, int k) {
+     
+        unordered_map<char,int>mp;
+        int i=0,j=0,n=s.size();
+        int maxi = INT_MIN;
+        
+        while(j<n){
+            mp[s[j]]++;
+            
+            if(mp.size()<k){
+                j++;
+            }
+            else if(mp.size()==k){
+                maxi = max(maxi,j-i+1);
+                j++;
+                
+            }
+            else{
+                while(mp.size() >k){
+                    mp[s[i]]--;
+                    if(mp[s[i]]==0){
+                        mp.erase(s[i]);
+                    }
+                    i++;
+                }
+                j++;
+            }
+        }
+        if(maxi==INT_MIN) return -1;
+        return maxi;
+    }
+};
