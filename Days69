@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n =10;
+    int *ptr1 = &n;
+    int **ptr2 = &ptr1;
+
+    cout<<n<<endl;
+    cout<<ptr1<<endl;
+    cout<<ptr2<<endl;
+    cout<<"next address"<<endl;
+    cout<<ptr1<<endl;
+    cout<<&n<<endl;
+
+    cout<<&ptr1<<endl;
+    cout<<ptr2<<endl;
+
+    cout<<"values"<<endl;
+
+    cout<<*ptr1<<endl;
+    cout<<**ptr2<<endl;
+    cout<<&ptr2<<endl;
+
+    *ptr1 = *ptr1+5;
+    cout<<n<<endl;
+
+    **ptr2 = **ptr2 + 2;
+    cout<<n<<endl;
+}
