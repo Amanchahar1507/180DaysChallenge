@@ -1,0 +1,22 @@
+
+Magic in CPP
+
+
+void swap(int *A, int *B){
+    
+    // Your code here
+     int temp=*A;
+     *A =*B;
+     *B=temp;
+}
+
+// Function to swap A and B
+// using reference
+void swap(int &A, int &B){
+  
+    // Your code here
+    int temp=A;
+    A=B;
+    B=temp;
+  
+}
