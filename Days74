@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    // int n;
+    // int m;
+    // cin>>n>>m;
+
+    // int **ptr = new int *[n];
+
+    // //CREATED 2D ARRAY POINTER.
+    // for(int i=0;i<n;i++){
+    //     ptr[i] = new int[m];
+    // }
+
+    // // VALUE IN 2D ARRAY POINTER.
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         cin>>ptr[i][j];
+
+    //     }
+    // }
+
+    // //PRINT A OUTPUT.
+    // for(int i=0;i<n;i++){
+    //     for(int j=0;j<m;j++){
+    //         cout<<ptr[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
+
+    // //DELETE THE SPACE.
+    // for(int i=0;i<n;i++){
+    //     delete[] ptr[i];
+    // }
+    // delete[] ptr;
+
+    int L,B,N;
+    cin>>L>>B>>N;
+    int ***ptr = new int **[L];
+
+    for(int i=0;i<L;i++){
+        ptr[i] = new int *[B];
+        for(int j=0;j<B;j++){
+            ptr[i][j] = new int [N];
+        }
+    }
+
+    for(int i=0;i<L;i++){
+        for(int j=0;j<B;j++){
+            for(int k=0;k<N;k++){
+                ptr[i][j][k] = i+j+k;
+            }
+        }
+    }
+    for(int i=0;i<L;i++){
+        for(int j=0;j<B;j++){
+            for(int k=0;k<N;k++){
+                cout<<ptr[i][j][k]<<" ";
+            }
+        }
+    }
+}
