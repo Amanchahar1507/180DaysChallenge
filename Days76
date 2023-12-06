@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+
+// 1: Print all odd numbers from 1 to n using recursion.
+
+// void printodd(int n){
+//     if(n==1){
+//         cout<<n<<endl;
+//         return;
+//     }
+//     if(n%2!=0)
+//     printodd(n-2);
+//     if(n%2!=0)
+//     cout<<n<<endl;
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     printodd(n); 
+// }
+
+
+// 2: Print all numbers from 10 to n using recursion, where n will be greater than 10.
+
+// void printnum(int n, int num){
+//     if(n==num){
+//         cout<<n<<endl;
+//         return;
+//     }
+//     cout<<num<<endl;
+//     printnum(n,num+1);
+    
+// }
+// int main(){
+//     int n,num;
+//     cin>>n>>num;
+
+//     printnum(n,num);
+// }
+
+// void printnum(int n){
+//     if(n==10){
+//         cout<<n<<endl;
+//         return;
+//     }
+//     printnum(n-1);
+//     cout<<n<<endl;
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     printnum(n);
+// }
+
+// 3: Write a Table program using recursion. Take input number n, and print its table.
+
+// void printtable(int i,int n){
+//     if(i==10){
+//         cout<<n*10<<endl;
+//         return;
+//     }
+//     cout<<n*i<<endl;
+//     printtable(i+1,n);
+
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     printtable(1,n);
+// }
