@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+
+// FACTORIAL USING RECURSION.
+
+// int fact(int n){
+//     if(n==1 || n==0){
+//         return 1;
+//     }
+//     return n*fact(n-1);
+// }
+
+// int main(){
+//     int n;
+//     cin>>n;
+//     if(n<0){
+//         cout<<"enter valid number"<<endl;
+//         return 0;
+//     }
+//     cout<< fact(n);
+// }
+
+// SUM OF N NATURAL NUMBERS.
+
+// int sum(int n){
+//     if(n==1){
+//         return 1;
+//     }
+//     return n+sum(n-1);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+
+//     cout<<sum(n);
+// }
+
+// SQUARE OF A NUMBER;
+
+// int power(int num,int n){
+//     if(n==0){
+//         return 1;
+//     }
+//     if(n==1){
+//         return 2;
+//     }
+//     return num*power(num,n-1);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<power(2,n);
+// }
+
+//SUM OF SQUARE OF NUMBER.
+
+// int square(int n){
+//     if(n==0)return 0;
+//     if(n==1){
+//         return 1;
+//     }
+//     return (n*n)+square(n-1);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<square(n);
+// }
+
+//  Sum of cubes of N natural numbers using Recursion
+
+// int cube(int n){
+//     if(n==0)return 0;
+//     if(n==1){
+//         return 1;
+//     }
+//     return (n*n*n)+cube(n-1);
+// }
+// int main(){
+//     int n;
+//     cin>>n;
+//     cout<<cube(n);
+// }
+
