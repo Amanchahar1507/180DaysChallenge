@@ -1,0 +1,31 @@
+1...............Count number of hops
+
+class Solution
+{
+    public:
+    long long fun(int sum, vector<int>&dp){
+        if(sum==0) return 1;
+        if(sum<0) return 0;
+        if(dp[sum]!=-1) return dp[sum];
+        
+        long long mod = 1e9+7L;
+        
+        int res = (fun(sum-1,dp)%mod +fun(sum-2,dp)%mod + fun(sum-3,dp)%mod)%mod;
+        return dp[sum] = res;
+    }
+    long long countWays(int n)
+    {
+        
+        // your code here
+        // if(n==1) return 1;
+        // if(n==2) return 2;
+        // if(n==3) return 4;
+        // return countWays(n-1)+countWays(n-2)+countWays(n-3);
+        
+        ///DP SOLUTION
+        
+        vector<int>dp(n+1,-1);
+        return fun(n,dp);
+        
+    }
+};
