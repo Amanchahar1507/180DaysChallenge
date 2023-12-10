@@ -1,0 +1,17 @@
+class Solution {
+  public:
+  
+    vector<long long> Series(int N) {
+        // COde here
+        vector<long long>ans;
+        if(N==1){
+            ans.push_back(0);
+            ans.push_back(1);
+            return ans;
+        }
+        else{
+            ans = Series(N-1);
+        }
+        ans.push_back(ans[N-1]+ans[N-2]);
+    }
+};
