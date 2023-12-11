@@ -1,0 +1,95 @@
+#include<iostream>
+using namespace std;
+
+// void print(int arr[],int index,int n){
+//     if(index==n){
+//         return;
+//     }
+//      cout<<arr[index]<<endl;
+//     print(arr,index+1,n);
+   
+// }
+// int main(){
+//     int arr[6] = {2,4,1,3,6,8};
+//     print(arr , 0 ,6);
+// }
+
+// void print(int arr[],int index,int n){
+//     if(index==n){
+//         return;
+//     }
+//     print(arr,index+1,n);
+//     cout<<arr[index]<<endl;
+// }
+// int main(){
+//     int arr[6] = {2,4,1,3,6,8};
+//     print(arr , 0 ,6);
+// }
+
+// int sum(int arr[], int index, int n){
+//     if(index == n){
+//         return 0;
+//     }
+
+//     return arr[index]+sum(arr,index+1,n);
+// }
+// int main(){
+//     int arr[] = {1,2,3,4,5};
+//     cout<<sum(arr, 0, 5)<<endl;
+// }
+
+
+// MINIMUM ELEMENT 
+
+// int mini(int arr[], int index, int n){
+//     if(index==n-1) return arr[index];
+
+//     return min(arr[index], mini(arr,index+1,n));
+// }
+// int main(){
+//     int arr[] = {7,3,5,1,8};
+//     cout<<mini(arr,0,5);
+// }
+
+//  1: Find the Maximum element in a given array of size N.
+
+// int maxi(int arr[], int index, int n){
+//     if(index==n-1) return arr[index];
+
+//     return max(arr[index], maxi(arr,index+1,n));
+// }
+// int main(){
+//     int arr[] = {7,3,5,1,4};
+//     cout<<maxi(arr,0,5);
+// }
+
+//    2: Find the Product of all elements in a given array of size N.
+
+// int prod(int arr[], int index, int n){
+//     if(index== n){
+//         return 1;
+//     }
+//     return arr[index]*prod(arr,index+1,n);
+// }
+// int main(){
+//     int arr[] = {2,4,6,1,3};
+//     cout<<prod(arr,0,5);
+// }
+
+//   3: Find the Number of even elements in a given array of size N.
+
+// int even(int arr[], int index, int n){
+//     if(index==n){
+//         return 0;
+//     }
+//     int currentElement = arr[index];
+//     int isEven = (currentElement % 2 == 0) ? 1 : 0;
+
+//     // Recursively count even elements in the rest of the array
+//     return isEven + even(arr,index +1,n);
+// }
+// int main(){
+//     int arr[] = {1,4,6,3,8,5,6};
+//     cout<<even(arr,0,7);
+    
+// }
