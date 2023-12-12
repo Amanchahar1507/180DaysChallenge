@@ -1,0 +1,48 @@
+Palindrome String
+
+class Solution{
+public:	
+	
+  int Palindrome(string &str,int s,int e)
+    {
+        if(s>e)     // base case
+        return 1; // saare cases check hogaye 
+        
+        if(str[s]!=str[e])
+        {
+            return 0;
+        }
+        else
+        {
+            s++;
+            e--;
+            Palindrome(str,s,e); // recursive relation
+        }
+    }
+ 
+int isPalindrome(string S)
+{
+    return Palindrome(S,0,S.length()-1);
+}
+
+};
+
+
+Reverse a String
+
+class Solution {
+  public:
+  
+    
+    string revStr(string S) {
+        // code here
+          int left =0;
+        int right =S.length()-1;
+        while(left<right){
+            char temp = S[left];
+            S[left++] = S[right];
+            S[right--]=temp;
+        }
+        return S;
+    }
+};
