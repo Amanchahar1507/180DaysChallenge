@@ -1,0 +1,136 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+// void subsetsum(int arr[], int index, int n, int sum){
+//     if(index==n){
+//         cout<<sum<<endl;
+//         return;
+//     }
+
+//     subsetsum(arr, index+1,n,sum+arr[index]);
+//     subsetsum(arr,index+1,n,sum);
+// }
+// int main(){
+//     int arr[] ={1,2,3,4};
+//     int sum=0;
+//     subsetsum(arr,0,4,sum);
+// }
+
+// void subsetsum(int arr[], int index, int n, int sum, vector<int>&ans){
+//     if(index==n){
+//         ans.push_back(sum);
+//         return;
+//     }
+//     subsetsum(arr,index+1, n,sum,ans);
+//     subsetsum(arr,index+1,n,sum+arr[index],ans);
+// }
+// int main(){
+//     int arr[] = {1,2,3,4};
+//     vector<int>ans;
+
+//     int sum=0;
+//     subsetsum(arr,0,4,sum,ans);
+//     for(int i=0;i<ans.size();i++){
+//         cout<<ans[i]<<endl;
+//     }
+// }
+
+
+void subsetsum(int arr[], int index, int n, int sum, vector<int>&ans,vector<int>v,vector<vector<int>>&set){
+    if(index==n){
+        set.push_back(v);
+        ans.push_back(sum);
+        return;
+    }
+    subsetsum(arr,index+1, n,sum,ans,v,set);
+    v.push_back(arr[index]);
+    subsetsum(arr,index+1,n,sum+arr[index],ans,v,set);
+}
+int main(){
+    int arr[] = {1,2,3,4};
+    vector<int>ans;
+    vector<vector<int>>set;
+    vector<int>v;
+    int sum=0;
+    subsetsum(arr,0,4,sum,ans,v,set);
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<" ";
+        for(int j=0;j<set[i].size();j++){
+        cout<<set[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+
+// bool targetsum(int arr[], int index, int n,int target){
+
+//     if(target==0){
+//         return 1;
+//     }
+//     if(target<0 || index==n){
+//         return 0;
+//     }
+//     return targetsum(arr, index+1,n,target)||targetsum(arr,index+1,n,target-arr[index]);
+    
+// }
+// int main(){
+//     int arr[] = {2,4,5,6};
+//     int target =9;
+//     cout<<targetsum(arr,0,4,target)<<endl;
+// }
+
+1...Subset Sums
+
+class Solution
+{
+public:
+
+    void sums(vector<int>&arr, int index, int n, int sum, vector<int>&ans){
+        if(index==n){
+            ans.push_back(sum);
+            return;
+        }
+        sums(arr,index+1,n,sum,ans);
+        sums(arr,index+1,n,sum+arr[index],ans);
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        // Write Your Code here
+        vector<int>ans;
+        int sum=0;
+        sums(arr,0,N,sum,ans);
+        return ans;
+    }
+};
+
+2.....Perfect Sum Problem
+class Solution{
+
+	public:
+	
+	void sums(int arr[], int index, int n,int val,vector<int>&ans){
+	    if(index==n){
+	        ans.push_back(val);
+	        return;
+	    }
+	    sums(arr, index+1, n,val,ans);
+	    sums(arr,index+1,n,val+arr[index],ans);
+	}
+	int perfectSum(int arr[], int n, int sum)
+	{
+        // Your code goes here
+        int count=0,val=0;
+        vector<int>ans;
+        sums(arr,0,n,val,ans);
+        for(int i=0;i<ans.size();i++){
+            if(ans[i]==sum){
+                count++;
+            }
+        }
+        return count;
+	}
+	  
+};
