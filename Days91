@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+// TARGET SUM
+
+// int subsum(int arr[], int index, int n, int sum){
+
+//     if(sum==0) return 1;
+//     if(index==n || sum<0) return 0;
+//     return subsum(arr,index+1,n,sum) + subsum(arr,index,n,sum-arr[index]);
+// }
+// int main(){
+//     int arr[] = {2,3,4,6};
+//     int sum =6;
+//     cout<<subsum(arr,0,4,sum);
+// }
+
+// PERFECT SUM;
+
+int perfectsum(int arr[], int index, int n, int sum){
+
+    // if(sum==0) return 1;
+    // if(index==n || sum<0) return 0;
+    if(index==n){
+        return sum==0;
+    }
+   return perfectsum(arr, index+1,n, sum) + perfectsum(arr,index+1, n, sum-arr[index]);
+}
+int main(){
+    int arr[] = {1,0};
+    int sum =1;
+    cout<<perfectsum(arr,0,2,sum);
+}
