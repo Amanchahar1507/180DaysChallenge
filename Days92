@@ -1,0 +1,67 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+// void perm(int arr[], vector<bool>&vis, vector<int>&temp, vector<vector<int>>&ans){
+
+//     if(vis.size() == temp.size()){
+//         ans.push_back(temp);
+//         return;
+//     }
+//     for(int i=0;i<vis.size();i++){
+//         if(vis[i]==0){
+//             vis[i] =1;
+//             temp.push_back(arr[i]);
+//             perm(arr,vis,temp,ans);
+//             temp.pop_back();
+//             vis[i] =0;
+//         }
+//     }
+// }
+// int main(){
+//     int arr[] = {1,2,3};
+//     vector<int>temp;
+//     vector<bool>vis(3,0);
+//     vector<vector<int>>ans;
+//     perm(arr,vis,temp,ans);
+
+//     for(int i=0;i<ans.size();i++){
+//         for(int j=0;j<ans[0].size();j++){
+//             cout<< ans[i][j]<<" ";
+//         }
+//         cout<<endl;
+//     }
+// }
+
+
+// SAME QUESTION FIND PERMUTATION BUT WITHOUT TEMP AND VIS;
+
+void perm(vector<int>&arr, vector<vector<int>>&ans, int n,int index){
+
+    if(index==n){
+        ans.push_back(arr);
+        return;
+    }
+    for(int i=index;i<n;i++){
+        swap(arr[i],arr[index]);
+        perm(arr,ans,n,index+1);
+        swap(arr[i],arr[index]);
+    }
+    
+}
+int main(){
+    vector<int>arr;
+    int n=3;
+    for(int i=0;i<3;i++){
+        arr[i] = i+1;
+    }
+    vector<vector<int>>ans;
+    perm(arr,ans,n,0);
+
+    for(int i=0;i<ans.size();i++){
+        for(int j=0;j<ans[i].size();i++){
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
