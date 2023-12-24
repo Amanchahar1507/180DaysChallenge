@@ -1,0 +1,80 @@
+46. Permutations
+
+class Solution {
+public:
+    void perm(int index,vector<int>&nums, vector<vector<int>>&ans){
+        if(index == nums.size()){
+            ans.push_back(nums);
+            return;
+            
+        }
+        for(int i = index;i<nums.size();i++){
+            swap(nums[index],nums[i]);
+            perm(index+1,nums,ans);
+            swap(nums[index],nums[i]);
+        }
+    }
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>ans;
+        perm(0,nums,ans);
+        return ans;
+    }
+};
+
+Permutations of a given string
+
+class Solution
+{
+	public:
+	    
+	    void perm(int index,string s, set<string>&ans){
+	        if(index==s.size()){
+	            ans.insert(s);
+	            return;
+	        }
+	        
+	        for(int i=index;i<s.size();i++){
+	            swap(s[index],s[i]);
+	            perm(index+1,s,ans);
+	            swap(s[index],s[i]);
+	        }
+	    }
+		vector<string>find_permutation(string S)
+		{
+		    // Code here there
+		    set<string>st;
+		    perm(0,S,st);
+		    vector<string>ans(st.begin(),st.end());
+		    return ans;
+		}
+};
+
+47. Permutations II
+
+class Solution {
+public:
+    
+    void solve(int index, vector<int>&nums,set<vector<int>>&ds, vector<vector<int>>&ans){
+        if(index==nums.size()){
+            ds.insert(nums);
+            return;
+        }
+        
+        for(int i=index;i<nums.size();i++){
+            swap(nums[index],nums[i]);
+            solve(index+1,nums,ds,ans);
+            swap(nums[index],nums[i]);
+        }
+       
+    }
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+      vector<vector<int>>ans;
+        set<vector<int>>ds;
+        solve(0,nums,ds,ans);
+        for(auto it:ds){
+            ans.push_back(it);
+        }
+        return ans;
+    }
+};
