@@ -1,0 +1,25 @@
+1...........Tower of hanoi.
+
+class Solution{
+    public:
+    // You need to complete this function
+
+    // avoid space at the starting of the string in "move disk....."
+    
+    void tohcal(int n, int sour, int help, int dest){
+        if(n==1){
+            cout<<"move disk "<< n <<" from rod " << sour <<" to rod " << dest<<endl;
+            return;
+        }
+        
+        tohcal(n-1,sour, dest, help);
+        cout<<"move disk "<< n <<" from rod " << sour <<" to rod " << dest<<endl;
+        tohcal(n-1,help,sour,dest);
+    }
+    long long toh(int N, int from, int to, int aux) {
+        // Your code here
+        tohcal(N,from,aux,to);
+        return pow(2,N)-1;
+    }
+
+};
