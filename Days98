@@ -1,0 +1,107 @@
+    Rat in a Maze Problem - I
+
+class Solution{
+    public:
+    int dx[4] = {-1,1,0,0};
+    int dy[4] = {0,0,-1,1};
+    string path ="UDLR";
+        
+    bool valid(int i, int j,int n){
+        return i>=0 && i<n && j>=0 && j<n;
+    }     
+    
+    void paths(vector<vector<int>>&m,int i, int j, int n, string &s,vector<vector<bool>>&vis, vector<string>&ans){
+        if(i==n-1 && j==n-1){
+            ans.push_back(s);
+            return;
+        }
+        
+        
+        vis[i][j] = 1;
+        for(int k=0;k<4;k++){
+            if(valid(i+dx[k],j+dy[k],n) && m[i+dx[k]][j+dy[k]]&& !vis[i+dx[k]][j+dy[k]]){
+                
+                s.push_back(path[k]);
+                paths(m,i+dx[k],j+dy[k],n,s,vis,ans);
+                s.pop_back();
+            }
+        }  
+        
+      vis[i][j] =0; 
+    }
+    vector<string> findPath(vector<vector<int>> &m, int n) {
+        // Your code goes here
+        vector<vector<bool>>vis(n,vector<bool>(n,0));
+        vector<string>ans;
+        string s;
+        if(m[0][0]==0 || m[n-1][n-1]==0){
+            return ans;
+        }
+        paths(m,0,0,n,s,vis,ans);
+        return ans;
+    }
+    
+    
+};   
+    
+    
+    
+   
+    
+    
+//   void dfs(int i, int j, vector<vector<int>> m, vector<vector<int>> &vist, string temp,int n,vector<string>&ans){
+//         vist[i][j] = 1;
+        
+//         if(i == n-1 && j== n-1){
+//             ans.push_back(temp);
+//             return;
+//         }
+        
+//         int dx[]={1,-1,0,0};
+//         int dy[]={0,0,1,-1};
+        
+//         for(int k=0; k<4; k++){
+//             int r= i+dx[k];
+//             int c= j+dy[k];
+            
+//             if(r>=0 && r<n &&c>=0 &&c<n && vist[r][c]== 0 && m[r][c] == 1){
+//                 vist[r][c]= 1;
+//                 if(k == 0){
+//                     temp+="D";
+//                 }
+//                 else if(k == 1){
+//                     temp+= "U";
+//                 }
+//                 else if(k == 2){
+//                     temp+= "R";
+//                 }
+//                 else{
+//                     temp += "L";
+//                 }
+                
+//                 dfs(r,c,m,vist,temp,n,ans);
+//                 temp.pop_back();
+//                 vist[r][c]= 0;
+//             }
+//         }
+//     }
+    
+    
+//     vector<string> findPath(vector<vector<int>> &m, int n) {
+//         // Your code goes here
+        
+//         vector<string> ans;
+        
+//         if(m[0][0] == 0 || m[n-1][n-1] == 0){
+//             return ans;
+//         }
+        
+//         vector<vector<int>> vist(n,vector<int>(n,0));
+//         string temp="";
+        
+//         dfs(0,0,m,vist,temp,n,ans);
+        
+//         return ans;
+//     }
+    
+// };
