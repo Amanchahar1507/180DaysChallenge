@@ -1,0 +1,33 @@
+   Print N-bit binary numbers having more 1s than 0s
+
+class Solution{
+public:	
+
+    void numbers(int n, int one, int zero, string &s , vector<string>&ans){
+        if(s.size()==n){
+            ans.push_back(s);
+            return;
+        }
+        
+        s.push_back('1');
+        numbers(n,one+1,zero,s,ans);
+        s.pop_back();
+        
+        if(zero<one){
+            s.push_back('0');
+            numbers(n,one,zero+1,s,ans);
+            s.pop_back();
+        }
+        
+        
+    }
+	vector<string> NBitBinary(int N)
+	{
+	    // Your code goes here
+	    vector<string>ans;
+	    string s="";
+	    int one=0,zero=0;
+	    numbers(N,one,zero,s,ans);
+	    return ans;
+	}
+};
