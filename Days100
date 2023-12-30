@@ -1,0 +1,47 @@
+1... 40. Combination Sum II
+
+class Solution {
+public:
+
+    void combination(int index,int n,vector<int>& candidates,int target,vector<int>& temp,vector<vector<int>>& ans){
+        if(target==0){
+            ans.push_back(temp);
+            return;
+        }
+        for(int i=index;i<n;i++){
+            if(i>index && candidates[i]==candidates[i-1]) continue;
+            if(target<candidates[i]) break;
+           temp.push_back(candidates[i]);
+           combination(i+1,n,candidates,target-candidates[i],temp,ans);
+           temp.pop_back();
+        }
+    }
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+         sort(candidates.begin(),candidates.end());
+        vector<vector<int>>ans;
+        vector<int>temp;
+        int n = candidates.size();
+        combination(0,n,candidates,target,temp,ans);
+        return ans;
+    }
+};
+
+2... 390. Elimination Game
+
+class Solution {
+public:
+    int lastRemaining(int n) {
+       bool left = true;
+       int head=1,step =1,remain =n;
+
+       while(remain>1){
+           if(left || remain&1){
+               head = head + step;
+           }
+           step = step*2;
+           remain = remain/2;
+           left = !left;
+       }
+       return head;
+    }
+};
