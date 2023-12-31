@@ -1,0 +1,111 @@
+1.........Print N to 1 without loop
+
+
+class Solution {
+  public:
+    void printNos(int N) {
+        // code here
+        if(N==1){
+            cout<<1<<" ";
+            return;
+        }
+        class Solution {
+  public:
+    void printGfg(int N) {
+        // Code here
+        if(N==1){
+            cout<<"GFG"<<" ";
+            return;
+        }
+        
+        cout<<"GFG"<<" ";
+        printGfg(N-1);
+    }
+};
+
+3..............Help the Old Man!!!
+
+class Solution{
+public:
+
+    void shift(int N,vector<pair<int,int>>&v,int src,int dest,int help){
+        if(N==0){
+           return;
+        }
+        
+        shift(N-1,v,src,help,dest);
+        v.push_back({src,dest});
+        shift(N-1,v,help,dest,src);
+    }
+    vector<int> shiftPile(int N, int n){
+        // code here
+        vector<pair<int,int>>v;
+        
+        shift(N,v,1,3,2);
+        
+        return {v[n-1].first,v[n-1].second};
+    }
+};
+
+4..........Insert an Element at the Bottom of a Stack
+
+class Solution{
+public:
+
+    void func(stack<int>&s,int num){
+       
+       if(s.size()==0){
+          s.push(num);
+          return;
+       }
+       int temp=s.top();
+       s.pop();
+       func(s,num);
+       s.push(temp);
+       return;
+   }
+   
+    stack<int> insertAtBottom(stack<int> St,int X){
+        
+        func(St,X);
+        return St;
+    }
+   
+   
+    // stack<int> insertAtBottom(stack<int> St,int X){
+    //     stack<int>s1;
+    //     stack<int>s2;
+    //     s1.push(X);
+    //     while(!St.empty()){
+    //         s2.push(St.top());
+    //         St.pop();
+    //     }
+        
+    //     while(!s2.empty()){
+    //         s1.push(s2.top());
+    //         s2.pop();
+    //     }
+    //     return s1;
+    // }
+};
+
+5..........Divisor Game
+
+class Solution {
+public:
+    bool divisorGame(int N) {
+        // code here
+         if(N%2==0)
+       {
+           return 1;
+       }
+       return 0;
+    }
+};
+        cout<<N<<" ";
+        printNos(N-1);
+    }
+};
+
+2...........Print GFG n times
+
