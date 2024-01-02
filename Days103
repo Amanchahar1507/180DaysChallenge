@@ -1,0 +1,87 @@
+
+#include<iostream>
+using namespace std;
+
+class Student{
+
+    // public:
+
+    // string name;
+    // int age;
+    // int roll_no;
+    // string grade;
+
+
+    //  IF THIS IS PRIVATE THAN WE USE THE FUNCTION TO ACCESS THE CLASS;
+    
+    string name;
+    int age;
+    int roll_no;
+    string grade;
+
+    public:
+    void setname(string s){
+        name = s;
+    }
+    void setage(int x){
+        age = x;
+    }
+    void setroll_no(int a){
+        roll_no = a;
+    }
+    void setgrade(string g){
+        grade = g;
+    }
+
+    void getname(){
+        cout<<name<<" ";
+    }
+    void getage(){
+        cout<<age<<" ";
+    }
+    void getroll_no(){
+        cout<<roll_no<<" ";
+    }
+    void getgrade(){
+        cout<<grade<<" ";
+    }
+};
+
+int main(){
+
+    // THIS IS FOR PUBLIC ACCESS MODIFIER GIVEN
+
+    // Student s1;
+    // s1.name = "aman";
+    // s1.age = 20;
+    // s1.roll_no = 10;
+    // s1.grade = "A";
+
+    // cout<<s1.age<<" ";
+
+    // Student s2;
+    // s2.name = "shalu";
+    // s2.age = 21;
+    // s2.roll_no = 58;
+    // s2.grade = "A";  
+
+    // cout<<s2.name<<" ";  
+
+    //THIS IS FOR PRIVATE ACCESS MODIFIER GIVEN;
+
+    Student s1;
+    s1.setname("aman");
+    s1.setage(20);
+    s1.setroll_no(10);
+    s1.setgrade("A");
+
+    s1.getage();
+
+    Student s2;
+    s2.setname("shalu");
+    s2.setage(21);
+    s2.setroll_no(58);
+    s2.setgrade("A");  
+
+    s2.getname();
+}
