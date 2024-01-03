@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+
+
+// CONSTRUCTOR
+
+// class construct{
+//     string name;
+//     int account_no;
+//     int balance;
+
+//     public:
+
+//     //DEFAULT CONSTRUCTOR.
+
+//     construct(){
+//         name = "aman";
+//         account_no = 20103010;
+//         balance = 2000;
+//     }
+    
+//     //PARAMETERIZED CONSTRUCTOR.
+    
+//     //  1.......
+//     // construct(string a,int x,int y){
+//     //     name = a;
+//     //     account_no = x;
+//     //     balance = y;
+//     // }
+
+//     //2......
+//     // using this operator we can access the address of object.
+//     construct(string name, int account_no,int balance){
+//         this->name = name;
+//         this->account_no = account_no;
+//         this->balance = balance;
+//     }
+
+//     // CONSTRUCT OVERLOADING.
+
+//     // 1 without this operator;
+
+//     // construct(string a,int x){
+//     //     name = a;
+//     //     balance = x;
+//     // }
+
+//     // 2. with this operator;
+
+//     construct(string name,int balance){
+//         this->name = name;
+//         this->balance = balance;
+//     }
+
+//     void display(){
+//         cout<<name <<" "<<account_no << " " <<balance<<endl;
+//     }
+
+//     // COPY CONSTRUCTOR;
+
+//     construct(construct &c2){
+//         name = c2.name;
+//         account_no = c2.account_no;
+//         balance = c2.balance;
+//     }
+
+// };
+
+// int main(){
+//     construct c1;
+//     construct c2("shalu",19103058,200000);
+//     construct c3("aman",2010);
+//     construct c4(c2);
+//     c1.display();
+//     c2.display();
+//     c3.display();
+//     c4.display();
+// }
+
+
+//  DESTRUCTOR
+
+class construct{
+    string name;
+    int *data;
+
+    public:
+
+    // construct(){
+    //     name ="aman";
+    //     data = new int;
+    //     *data =10;
+    //     cout<<"constructor"<<endl;
+    // }
+
+    // ~construct(){
+    //     delete data;
+    //     cout<<"destructor"<<endl;
+    // }
+    
+    construct(string name){
+        this->name = name;
+        cout<< "constructor" <<name<<endl;
+    }
+
+    ~construct(){
+        cout<<"destructor"<<name<<endl;
+    }
+};
+
+int main(){
+    // construct c1;
+
+    construct c1("1"), c2("2"),c3("3");
+}
