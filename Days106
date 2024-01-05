@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+
+// class Human{
+//     private:
+//     int a;
+
+//     protected:
+//     int b;
+
+//     void fun(){
+//         a =20;
+//         b=3;
+//         c=6;
+//     }
+
+//     public:
+//     int c;
+// };
+
+// int main(){
+//     Human aman;
+//    // aman.a = 2;     /// this give error because it is private class;
+//     aman.c = 5;  
+//     //aman.b = 6;       // this give error because it is protected.
+
+//     // aman.fun();
+// }
+
+class Human{
+
+    // string name;
+    // int age;
+
+    // protected:
+    // string name;
+    // int age;
+
+    public:
+    string name;
+    int age;
+};
+
+// class student : protected Human{
+//     int roll_no;
+
+// };
+
+class student : public Human{
+    int roll_no;
+
+};
+
+int main(){
+    student s1;
+    //s1.name = "aman";      // give error child is protected and base class privte does not acess.
+    //s1.name = "aman";        // give error both class are protected does not access it .
+    //s1,name = "aman";        // give error because child is protected and base class is public so overall behave as protected;
+    // s1.name = "aman";       //it does not give error because both class is public so overall public we can access.
+    
+}
