@@ -1,0 +1,39 @@
+Merge 2 sorted linked list in reverse order
+
+class Solution
+{
+    public:
+    
+    struct Node * mergeResult(Node *node1,Node *node2)
+    {
+        // your code goes here
+         Node *head = nullptr;
+        while(node1 && node2){
+            Node *cur = nullptr;
+            if(node1->data<node2->data){
+                cur = node1;
+                node1=node1->next;
+            }
+            else{
+                cur = node2;
+                node2 = node2->next;
+            }
+            cur->next = head;
+            head=cur;
+        }
+        while(node1){
+            Node* cur = node1;
+            node1=node1->next;
+            cur->next = head;
+            head=cur;
+        }
+        while(node2){
+            Node* cur = node2;
+            node2=node2->next;
+            cur->next = head;
+            head=cur;
+        }
+        return head;
+        
+    }  
+};
