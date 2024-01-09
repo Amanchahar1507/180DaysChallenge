@@ -1,0 +1,144 @@
+
+// types of inheritnance.............................
+
+#include<iostream>
+using namespace std;
+
+// class Human{
+
+//     protected:
+//     string name;
+//     int age;
+
+//     public:
+
+//     Human(string name, int age){
+//         this->name = name;
+//         this->age = age;
+//     }
+
+//     void display(){
+//         cout<<name<<" "<<age<<" \n";
+//     }
+
+//     void work(){
+//         cout<<"i am working \n";
+//     }
+
+// };
+
+// class student :public Human{
+    
+//     int roll_no;
+//     int fees;
+
+//     public:
+//     student(string name,int age, int roll_no, int fees):Human(name,age){
+//         // this->name = name;
+//         // this->age = age;
+//         this->roll_no = roll_no;
+//         this->fees = fees;
+//     }
+
+//     void display(){
+//         cout<<name<<" "<<age<<" "<<roll_no<<" "<<fees<<" \n";
+//     }
+// };
+
+// int main(){
+//     student s1("Aman",20,20103010,13000);
+//     s1.display();
+// }
+
+
+
+//    MULTILEVEL INHERITANCE........................
+
+// class person{
+//     protected:
+//     string name;
+
+//     public:
+//     void intro(){
+//         cout<<"hello my name is :"<<name<<endl;
+//     }
+// };
+
+// class employee: public person{
+//     protected:
+//     int salary;
+
+//     public:
+//     void monthly_salary(){
+//         cout<<"monthly salary is:"<<salary<<endl;
+//     }
+// };
+
+// class manager: public employee{
+//     public:
+//     string department;
+
+//     public:
+
+//     manager(string name,int salary,string department){
+//         this->name = name;
+//         this->salary = salary;
+//         this->department = department;
+//     }
+//     void dep(){
+//         cout<<"the department of the employee is:"<<department<<endl;
+//     }
+// };
+
+
+// int main(){
+//     manager m1("aman",200000,"software");
+//     m1.dep();
+//     m1.monthly_salary();
+//     m1.intro();
+
+//     m1.department;
+//     // m1.salary;  //NOT CALL BECAUSE IT IS PROTECTED;;
+// }
+
+//      MULTIPLE INHERITANCE..........................................
+  
+class engineer{
+    public:
+    string specilisation;
+
+    void branch(){
+        cout<<"i am specialized in a:"<<specilisation<<endl;
+    }
+};
+
+class youtuber{
+    public:
+    int subscriber;
+
+    void content(){
+        cout<<"my current subscriber is: "<<subscriber<<endl;
+    }
+};
+
+class codeteacher:public engineer, public youtuber {
+    public:
+    string name;
+
+    codeteacher(string specilisation, int subscriber,string name){
+        this->specilisation = specilisation;
+        this->subscriber = subscriber;
+        this->name = name;
+    }
+
+    void code(){
+        cout<<"my name is :"<<name<<endl;
+    }
+};
+
+int main(){
+    codeteacher c1("cse", 100000, "aman");
+    c1.code();
+    c1.content();
+    c1.branch();
+}
