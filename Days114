@@ -1,0 +1,78 @@
+//.......FILE HANDLING...............................................................
+
+#include<bits/stdc++.h>
+#include<fstream>
+#include<vector>
+using namespace std;
+
+//   WRITE THE DATA IN FILE;
+
+int main(){
+
+    // ofstream fout;
+    // // open the file.
+    // fout.open("aman.txt");
+    // //write the data in file;
+    // fout<<"hello Aman Chahar";
+    // fout.close();
+
+    // 2 METHOD....
+
+    // vector<int>v(5);
+    // cout<<"enter the input \n";
+    // for(int i=0;i<5;i++){
+    //     cin>>v[i];
+    // }
+
+    // ofstream fout;
+    // fout.open("number.txt");
+
+    // fout<<"original data\n";
+    // for(int i=0;i<5;i++){
+    //     fout<<v[i]<<" ";
+    // }
+
+    // fout<<"\nnew sorted data\n";
+    
+
+    // sort(v.begin(),v.end());
+
+    // for(int i=0;i<5;i++){
+    //     fout<<v[i]<<" ";
+    // }
+    // fout.close();
+
+    ofstream fout;
+    fout.open("shalu.txt");
+    fout<<"hello indian\n";
+    fout<<"hello shalu\n";
+    fout<<"hello my dear crush\n";
+
+    fout.close();
+
+    ifstream fin;
+    fin.open("shalu.txt");
+
+    string line;
+    while(getline(fin,line)){
+        cout<<line<<endl;
+    }
+    fin.close();
+}
+
+
+//   READ THE FILE IN THIS.........
+
+// int main(){
+//     ifstream fin;
+
+//     fin.open("aman.txt");
+
+//     char c;
+//     c = fin.get();
+//     while(!fin.eof()){
+//         cout<<c;
+//         c = fin.get();
+//     };
+//     fin.close();
+// }
