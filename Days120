@@ -1,0 +1,155 @@
+1................234. Palindrome Linked List.........................
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if(head->next==NULL) return 1;
+         int count=0;
+        ListNode*temp = head;
+        while(temp){
+            count++;
+            temp = temp->next;
+        }
+        count = count/2;
+        ListNode*prev = NULL;
+        ListNode* curr = head;
+        while(count--){
+            prev = curr;
+            curr = curr->next;
+        };
+        prev->next = NULL;
+
+        ListNode* fut;
+        prev = NULL;
+
+        while(curr){
+            fut = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = fut;
+        }
+
+        ListNode*head1 = head;
+        ListNode*head2  = prev;
+
+        while(head1){
+            if(head1->val!=head2->val){
+                return 0;
+            }
+            head1 = head1->next;
+            head2 = head2->next;
+        }
+        return 1;
+    }
+};
+
+2.............61. Rotate List...............
+
+ */
+class Solution {
+public:
+    ListNode* rotateRight(ListNode* head, int k) {
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+        if(k==0){
+            return head;
+        }
+        
+        ListNode*temp = head;
+        
+        int count=0;
+        while(temp){
+            count++;
+            temp = temp->next;
+        }
+        // if(k>count){
+        //     count = k%count;
+        // }
+        k = k%count;
+        if(k==0){
+            return head;
+        }
+        count -= k;
+        temp = head;
+        ListNode*prev = NULL;
+        while(count--){
+            prev = temp;
+            temp = temp->next;
+        }
+        prev->next = NULL;
+        ListNode*tail = temp;
+        while(tail->next!=NULL){
+            tail = tail->next;
+        }
+        tail->next = head;
+        head = temp;
+        return head;
+    }
+};
+
+3................Remove every k'th node.....................
+
+Node* deleteK(Node *head,int K)
+{
+  //Your code here
+  if(K==1) return NULL;
+  Node*temp = head;
+  Node*prev = NULL;
+  int count = 1;
+  
+  while(temp){
+      if(count==K){
+          prev->next = temp->next;
+          delete temp;
+          temp = prev->next;
+          count=1;
+      }
+      else{
+          prev= temp;
+          temp = temp->next;
+          count++;
+      }
+  }
+  return head;
+}
+
+4.........19. Remove Nth Node From End of List...............
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+       int cnt =0;
+       ListNode*temp = head;
+       while(temp){
+           cnt++;
+           temp = temp->next;
+       }
+       int tar = cnt-n;
+
+       if(tar==0){
+           temp = head;
+           head = head->next;
+           delete temp;
+           return head;
+       }
+       temp = head;
+       ListNode*prev = NULL;
+       while(tar--){
+           prev = temp;
+           temp = temp->next;
+       }
+       prev->next = temp->next;
+       return head;
+    }
+};
