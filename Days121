@@ -1,0 +1,22 @@
+Distribute candies in a binary tree
+
+class Solution
+{
+    public:
+    int moves;
+    
+    int solve(Node* root){
+        if(root==NULL) return 0;
+        int l=solve(root->left);
+        int r=solve(root->right);
+        moves+=(abs(l)+abs(r));
+        return ((l+r+root->key)-1);
+    }
+    int distributeCandy(Node* root)
+    {
+        //code here
+         moves=0;
+        solve(root);
+        return moves;
+    }
+};
