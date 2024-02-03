@@ -1,0 +1,44 @@
+Decimal Equivalent of Binary Linked List
+
+
+class Solution
+{
+    public:
+        // Should return decimal equivalent modulo 1000000007 of binary linked list 
+        long long unsigned int modularPow(int x, int n){
+            long long unsigned int ans = 1;
+            x %= MOD;
+            
+            while(n>0){
+                if(n%2 == 1){
+                    ans = ((ans%MOD)*(x%MOD))%MOD;
+                }
+                x = ((x%MOD)*(x%MOD))%MOD;
+                n /= 2;
+            }
+            return ans;
+        }
+        // Should return decimal equivalent modulo 1000000007 of binary linked list 
+        long long unsigned int decimalValue(Node *head)
+        {
+           Node* dummyHead = head;
+           
+           int n = 0;
+           while(dummyHead != NULL){
+               n++;
+               dummyHead = dummyHead->next;
+           }
+           
+           long long unsigned int ans = 0;
+           n--;
+           while(head != NULL){
+              if(head->data){
+                  ans = (ans%MOD + modularPow(2,n)%MOD)%MOD;
+              }
+              n--;
+              head = head->next;
+           }
+           
+           return ans%MOD;
+        }
+};
