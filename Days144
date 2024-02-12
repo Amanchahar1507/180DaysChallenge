@@ -1,0 +1,146 @@
+1..............Get minimum element from stack
+
+// .........METHOD 1 USING 2 STACK.................
+
+// class Solution{
+//     int minEle;
+//     stack<int>st1;
+//     stack<int>st2;
+//     public:
+      
+//       int getMin(){
+//           if(st2.empty()){
+//               return -1;
+//           }
+//           return st2.top();
+//       }
+       
+//       int pop(){
+//           if(st1.empty()){
+//               return -1;
+//           }
+//           else{
+//               int ele = st1.top();
+//               st1.pop();
+//               st2.pop();
+//               return ele;
+//           }
+//       }
+       
+      
+//       void push(int x){
+           
+//           if(st1.empty()){
+//               st1.push(x);
+//               st2.push(x);
+//           }
+//           else{
+//               st1.push(x);
+//               st2.push(min(x,st2.top()));
+//           }
+//       }
+// };
+
+
+class Solution{
+    int minEle;
+    stack<int> s;
+    public:
+       int getMin(){
+           if(s.empty()){
+               return -1;
+           }
+           return s.top()%101;
+       }
+       
+       int pop(){
+           if(s.empty()){
+               return -1;
+           }
+           else{
+               int ele = s.top()/101;
+               s.pop();
+               return ele;
+           }
+       }
+       
+       void push(int x){
+           
+          if(s.empty()){
+              s.push(x*101+x);
+          }
+          else{
+              s.push(x*101 + min((s.top())%101,x));
+          }
+       }
+};
+
+2..............Maximum of minimum for every window size
+
+class Solution
+{
+    public:
+    //Function to find maximum of minimums of every window size.
+    vector <int> maxOfMin(int arr[], int n)
+    {
+        // Your code here
+        
+        //.......METHOD 1 T.C(O(N^2))...........
+        
+        // vector<int>ans(n,0);
+        
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<n-i;j++){
+        //         int mini = INT_MAX;
+        //         for(int k=j;k<i+j+1;k++){
+        //             mini = min(mini,arr[k]);
+        //         }
+        //         ans[i] = max(ans[i],mini);
+        //     }
+        // }
+        // return ans;
+        
+        //.............METHOD 2.....................T.C->O(N^2)........
+        
+        vector<int>ans(n,0);
+        stack<int>st;
+        
+        for(int i=0;i<n;i++){
+            while(!st.empty() && arr[st.top()] > arr[i]){
+                int index = st.top();
+                st.pop();
+                
+                if(st.empty()){
+                    int range =i;
+                    
+                    ans[range-1] = max(ans[range-1],arr[index]);
+                }
+                else{
+                    int range = i-st.top()-1;
+                    ans[range-1] = max(ans[range-1],arr[index]);
+                }
+            }
+            st.push(i);
+        }
+        
+        while(!st.empty()){
+            int index = st.top();
+            st.pop();
+            
+            if(st.empty()){
+                int range =n;
+                ans[range-1] = max(ans[range-1],arr[index]);
+            }
+            else{
+                int range = n-st.top()-1;
+                ans[range-1] = max(ans[range-1],arr[index]);
+            }
+            
+        }
+        
+        for(int i=n-2;i>=0;i--){
+            ans[i] = max(ans[i],ans[i+1]);
+        }
+        return ans;
+    }
+};
