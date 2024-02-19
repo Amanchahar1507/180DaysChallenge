@@ -1,0 +1,257 @@
+#include<iostream>
+using namespace std;
+
+
+
+/// .........  USING LINKED LIST...............
+
+// class Node{
+//     public:
+//     int data;
+//     Node*next;
+//     Node*prev;
+//     Node(int value){
+//         data = value;
+//         next = NULL;
+//         prev = NULL;
+//     }
+// };
+
+// class dequeue{
+//     Node*front;
+//     Node*rear;
+
+//     public:
+//     dequeue(){
+//         front = rear = NULL;
+//     }
+
+//     void push_front(int x){
+//         if(front==NULL){
+//             front = rear = new Node(x);
+//             cout<<"pushed"<<x<<"in front of dequeue"<<endl;
+//             return;
+//         }
+//         else{
+//             Node*temp = new Node(x);
+//             temp->next = front;
+//             front->prev = temp;
+//             front = temp;
+//             cout<<"pushed"<<x<<"in front of dequeue"<<endl;
+//             return;
+//         }
+//     }
+
+//     void push_back(int x){
+//         if(front==NULL){
+//             front = rear = new Node(x);
+//             cout<<"pushed"<<x<<"in back of dequeue"<<endl;
+//             return;
+//         }
+//         else{
+//             Node*temp = new Node(x);
+//             rear->next = temp;
+//             temp->prev = rear;
+//             rear = temp;
+//             cout<<"pushed"<<x<<"in back of dequeue"<<endl;
+//             return;
+//         }
+//     }
+
+//     void pop_front(){
+//         if(front==NULL){
+//             cout<<"dequeue underflow"<<endl;
+//             return;
+//         }
+//         else{
+//             Node*temp = front;
+//             cout<<"popped "<<temp->data<<"from front of dequeue"<<endl;
+//             front = front->next;
+//             delete temp;
+//             if(front){
+//                 front->prev = NULL;
+//             }
+//             else{
+//                 rear = NULL;
+//             }
+//         }
+//     }
+
+//     void pop_back(){
+//         if(front==NULL){
+//             cout<<"dequeue underflow"<<endl;
+//             return;
+//         }
+//         else{
+//             Node*temp = rear;
+//             cout<<"popped "<<temp->data<<"from back of dequeue"<<endl;
+//             rear = rear->prev;
+//             delete temp;
+//             if(rear){
+//                 rear->next = NULL;
+//             }
+//             else{
+//                 front = NULL;
+//             }
+//         }
+//     }
+
+//     int start(){
+//         if(front==NULL){
+//             return -1;
+//         }
+//         else{
+//             return front->data;
+//         }
+//     }
+
+//     int end(){
+//         if(front==NULL){
+//             return -1;
+//         }
+//         else{
+//             return rear->data;
+//         }
+//     }
+// };
+
+// int main(){
+//     dequeue d;
+//     d.push_back(5);
+//     d.push_front(10);
+//     d.pop_back();
+//     cout<<d.start()<<endl;
+//     d.pop_back();
+//     d.pop_back();
+// }
+
+
+//.............USING ARRAY...........
+
+
+class dequeue{
+    int front,rear;
+    int size;
+    int *arr;
+    public:
+    dequeue(int x){
+        size = x;
+        arr = new int[x];
+        front = rear =-1;
+    }
+
+    bool Isempty(){
+        if(front==-1){
+            return true;
+        }
+        return false;
+    }
+
+    bool Isfull(){
+        if((rear+1)%size == front){
+            return true;
+        }
+        return false;
+    }
+
+    void push_front(int x){
+        if(Isempty()){
+            front = rear =0;
+            cout<<"pushed"<<x<<"from the front"<<endl;
+            arr[0] = x;
+            return;
+        }
+        else if(Isfull()){
+            cout<<"overflow"<<endl;
+            return;
+        }
+        else{
+            front = (front-1+size)%size;
+            arr[front] = x;
+            cout<<"pushed"<<x<<"from the front"<<endl;
+            return;
+        }
+    }
+
+    void push_back(int x){
+        if(Isempty()){
+            front = rear =0;
+            arr[0] =x;
+            cout<<"pushed"<<x<<"from the back"<<endl;
+            return;
+        }
+        else if(Isfull()){
+            cout<<"overflow"<<endl;
+            return;
+        }
+        else{
+            rear = (rear+1)%size;
+            arr[rear] = x;
+            cout<<"pushed"<<x<<"from the back"<<endl;
+            return;
+        }
+    }
+
+    void pop_front(){
+        if(Isempty()){
+            cout<<"underflow"<<endl;
+            return;
+        }
+        else{
+            cout<<"popped"<<arr[front]<<"from front of dequeue"<<endl;
+            if(front == rear){
+                front = rear=-1;
+            }
+            else{
+                front = (front+1)%size;
+                
+            }
+        }
+    }
+
+    void pop_back(){
+        if(Isempty()){
+            cout<<"underflow"<<endl;
+            return;
+        }
+
+        else{
+            cout<<"popped"<<arr[rear]<<"from back of dequeue"<<endl;
+            if(front==rear){
+                front= rear =-1;
+            }
+            else{
+                rear = (rear-1+size)%size;
+            }
+        }
+    }
+
+    int start(){
+        if(Isempty()){
+            return -1;
+        }
+        else{
+            return arr[front];
+        }
+    }
+
+    int end(){
+        if(Isempty()){
+            return -1;
+        }
+        else{
+            return arr[rear];
+        }
+    }
+};
+
+
+int main(){
+    dequeue d(5);
+    d.push_back(3);
+    d.push_back(5);
+    d.push_front(2);
+    d.push_front(4);
+    d.pop_front();
+    d.pop_back();
+}
