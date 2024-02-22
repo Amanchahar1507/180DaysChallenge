@@ -1,0 +1,116 @@
+#include<iostream>
+using namespace std;
+
+// class Node{
+//     public:
+//     int data;
+//     Node*left;
+//     Node*right;
+
+//     Node(int value){
+//         data = value;
+//         left = right = NULL;
+//     }
+// };
+
+// Node*BinaryTree(){
+//     int n;
+//     cin>>n;
+
+//     if(n==-1){
+//         return NULL;
+//     }
+
+//     Node*temp = new Node(n);
+//     cout<<"enter the left child "<<n<<" :";
+//     temp->left = BinaryTree();
+
+//     cout<<"enter the right child"<<n<<" :";
+//     temp->right = BinaryTree();
+
+//     return temp;
+// }
+
+
+// int main(){
+//    cout<<"create the root node"<<" ";
+//    Node*root;
+//    root = BinaryTree();
+// }
+
+
+class Node{
+    public:
+    int data;
+    Node*left;
+    Node*right;
+
+    Node(int value){
+        data = value;
+        left = right = NULL;
+    }
+};
+
+void preorder(Node* root){
+    if(root==NULL){
+        return;
+    }
+
+    cout<<root->data<<endl;
+    preorder(root->left);
+    preorder(root->right);
+
+}
+
+void inorder(Node*root){
+    if(root==NULL){
+        return;
+    }
+
+    inorder(root->left);
+    cout<<root->data<<endl;
+    inorder(root->right);
+}
+
+void postorder(Node*root){
+    if(root==NULL) {
+        return;
+    }
+
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<endl;
+}
+Node*BinaryTree(){
+    int n;
+    cin>>n;
+
+    if(n==-1){
+        return NULL;
+    }
+
+    Node*temp = new Node(n);
+    cout<<"enter the left child "<<n<<" :";
+    temp->left = BinaryTree();
+
+    cout<<"enter the right child"<<n<<" :";
+    temp->right = BinaryTree();
+
+    return temp;
+}
+
+int main(){
+   cout<<"create the root node"<<" ";
+   Node*root;
+   root = BinaryTree();
+
+   cout<<"preorder level"<<" :";
+   preorder(root);
+
+   cout<<"\n inorder level"<<" ";
+   inorder(root);
+
+   cout<<"\n postorder level" <<" ";
+   postorder(root);
+
+}
