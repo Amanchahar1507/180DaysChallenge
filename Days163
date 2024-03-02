@@ -1,0 +1,103 @@
+1...........Diagonal Traversal of Binary Tree
+
+void find(Node*root, int pos, int &l){
+    if(root==NULL) return;
+    
+    l = max(pos,l);
+    
+    find(root->left,pos+1,l);
+    find(root->right,pos,l);
+}
+
+void finddia(Node*root,int pos, vector<vector<int>>&ans){
+    if(root==NULL) return;
+    
+    ans[pos].push_back(root->data);
+    
+    finddia(root->left,pos+1,ans);
+    finddia(root->right,pos,ans);
+}
+
+vector<int> diagonal(Node *root)
+{
+   // your code here
+   int l=0;
+   find(root,0,l);
+   
+   vector<vector<int>>diag(l+1);
+   
+   finddia(root, 0,diag);
+   
+   vector<int>ans;
+   
+   for(int i=0;i<diag.size();i++){
+       for(int j=0;j<diag[i].size();j++){
+           ans.push_back(diag[i][j]);
+       }
+   }
+   
+   return ans;
+}
+
+2...............Boundary Traversal of binary tree
+
+class Solution {
+public:
+
+    void leftboundary(Node*root, vector<int>&ans){
+        if(root==NULL || (root->left==NULL && root->right==NULL)){
+            return;
+        }
+        ans.push_back(root->data);
+        
+        if(root->left)
+        leftboundary(root->left,ans);
+        else
+            leftboundary(root->right,ans);
+    }
+    
+    void leafboundary(Node*root, vector<int>&ans){
+        if(root==NULL) return;
+        
+        if(root->left==NULL && root->right==NULL){
+            ans.push_back(root->data);
+            return;
+        }
+        
+        leafboundary(root->left,ans);
+        leafboundary(root->right,ans);
+        
+    }
+    
+    void rightboundary(Node*root,vector<int>&ans){
+        if(root==NULL ||(root->left==NULL && root->right==NULL)){
+            return;
+        }
+        
+        if(root->right){
+            rightboundary(root->right,ans);
+        }
+        else{
+            rightboundary(root->left,ans);
+        }
+        
+        ans.push_back(root->data);
+    }
+
+    vector <int> boundary(Node *root)
+    {
+        //Your code here
+        vector<int>ans;
+        
+        ans.push_back(root->data);
+        
+        leftboundary(root->left,ans);
+        
+        if(root->left || root->right)
+        leafboundary(root,ans);
+        
+        rightboundary(root->right,ans);
+        
+        return ans;
+    }
+};
