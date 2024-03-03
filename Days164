@@ -1,0 +1,122 @@
+Top View of Binary Tree
+
+class Solution
+{
+    public:
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    
+    
+    //......METHOD 1 WITH QUEUE............
+    
+    void find(Node*root, int pos, int &l, int &r){
+        if(root==NULL){
+            return;
+        }
+        
+        l = min(pos,l);
+        r = max(pos,r);
+        
+        find(root->left,pos-1,l,r);
+        find(root->right,pos+1,l,r);
+        
+    }
+    
+    vector<int> topView(Node *root){
+        int l=0,r=0;
+        find(root,0,l,r);
+        
+        vector<int>ans(r-l+1);
+        vector<bool>fill(r-l+1,0);
+        
+        queue<Node*>q;
+        queue<int>index;
+        
+        q.push(root);
+        index.push(-1*l);
+        
+        while(!q.empty()){
+            Node*temp = q.front();
+            q.pop();
+            
+            int pos = index.front();
+            index.pop();
+            
+            if(!fill[pos]){
+                fill[pos] =1;
+                ans[pos] = temp->data;
+            }
+            
+            if(temp->left){
+                q.push(temp->left);
+                index.push(pos-1);
+            }
+            if(temp->right){
+                q.push(temp->right);
+                index.push(pos+1);
+            }
+        }
+        
+        return ans;
+    }
+    
+
+    //.. .......METHOD 2 RECURSION...........
+    
+    // void find(Node*root, int pos, int &l ,int &r){
+    //     if(root==NULL) return;
+        
+    //     l = min(l,pos);
+    //     r = max(r,pos);
+        
+    //     find(root->left,pos-1,l,r);
+    //     find(root->right,pos+1,l,r);
+    // }
+    
+    // void top(Node*root, int pos, vector<int>&ans, vector<int>&level, int l){
+        
+    //     if(root==NULL) return;
+        
+    //     if(level[pos] >l ){
+    //         ans[pos] = root->data;
+    //         level[pos] = l;
+    //     }
+        
+    //     top(root->left,pos-1,ans,level,l+1);
+    //     top(root->right,pos+1,ans,level,l+1);
+    // }
+    
+    //  vector<int> topView(Node *root){
+    //      int l=0,r=0;
+    //      find(root,0,l,r);
+    //      vector<int>ans(r-l+1);
+    //      vector<int>level(r-l+1,INT_MAX);
+         
+    //      top(root,-1*l, ans, level,0);
+    //      return ans;
+    //  }
+};
+
+Largest Number formed from an Array
+class Solution{
+public:
+	// The main function that returns the arrangement with the largest value as
+	// string.
+	// The function accepts a vector of strings
+	
+ static bool compare(string a, string b) {
+        return a + b > b + a; // Compare concatenations to determine order
+    }
+    
+    string printLargest(int n, vector<string> &arr) {
+        // Sort the strings using custom comparator
+        sort(arr.begin(), arr.end(), compare);
+        
+        string largest;
+        for (const string &s : arr) {
+            largest += s; // Concatenate sorted strings
+        }
+        
+        return largest;
+    }
+};
